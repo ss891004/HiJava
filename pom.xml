@@ -12,6 +12,7 @@
     <module>HiMybatis</module>
     <module>HiSwagger2</module>
     <module>HiServlet</module>
+    <module>HiSSM</module>
   </modules>
 
   <name>HiJava</name>

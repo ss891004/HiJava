@@ -9,6 +9,10 @@ import java.util.Map;
 //基于注解的实现
 public interface UserMapper2 {
 
+    /**
+     *
+     * @return
+     */
     @Select("select id,username,password,gender,regist_time as registTime from t_user")
     List<User> selectUser();
 
