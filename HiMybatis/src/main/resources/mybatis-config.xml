@@ -31,5 +31,6 @@
     <mappers>
         <!--mapper文件所在位置，默认放在resources 中-->
         <mapper resource="UserMapper.xml"/>
+        <mapper class ="com.hmrcb.mapper.UserMapper2"/>
     </mappers>
 </configuration>
