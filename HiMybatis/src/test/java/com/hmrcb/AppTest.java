@@ -15,15 +15,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 
+//表的CRUD
 public class AppTest 
 {
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
-
     @Test
     public  void test1() throws IOException {
         // 1. 加载配置文件

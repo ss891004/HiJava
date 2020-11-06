@@ -1,4 +1,5 @@
 create database mybatis default charset =utf8;
+
 create table t_user(
    id int primary key auto_increment,
    username varchar(50),
@@ -14,9 +15,9 @@ create table t_user(
 # )default charset =utf8;
 
 # create table t_student(
-#                         id varchar(32) primary key,
-#                         name varchar(50),
-#                         gender tinyint
+#  id varchar(32) primary key,
+#  name varchar(50),
+#  gender tinyint
 # )default charset =utf8;
 
 create table t_departments(

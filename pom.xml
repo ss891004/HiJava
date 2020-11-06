@@ -13,6 +13,7 @@
     <module>HiSwagger2</module>
     <module>HiServlet</module>
     <module>HiSSM</module>
+      <module>HiSM</module>
   </modules>
 
   <name>HiJava</name>

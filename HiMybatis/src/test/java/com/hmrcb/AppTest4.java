@@ -1,7 +1,6 @@
 package com.hmrcb;
 
 import com.hmrcb.entity.Order;
-import com.hmrcb.entity.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -10,14 +9,14 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
-//库表和实体类的栏位对应关系
-public class AppTest2 {
-
+// 调用存储过程
+public class AppTest4 {
     @Test
     public void test() throws IOException {
         // 1. 加载配置文件
@@ -29,12 +28,12 @@ public class AppTest2 {
         // 3. 通过SqlSessionFactory 创建 SqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        List<Order> ls = sqlSession.selectList("com.hmrcb.mapper.OrderMapper.getOrderById");
-        List<Order> ls2 = sqlSession.selectList("com.hmrcb.mapper.OrderMapper.selectOrder",1);
-        List<Order> ls3 = sqlSession.selectList("com.hmrcb.mapper.OrderMapper.selectOrderResultMap",2);
+        Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+        parameterMap.put("sexid", 1);
+        parameterMap.put("usercount", -1);
+        sqlSession.selectOne("com.hmrcb.mapper.ProcMapper.getUserCount", parameterMap);
+        Integer result = parameterMap.get("usercount");
+        System.out.println(result);
 
-        System.out.println(ls2);
-        System.out.println(ls2);
-        System.out.println(ls3);
     }
 }

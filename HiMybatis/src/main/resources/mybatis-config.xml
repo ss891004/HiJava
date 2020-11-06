@@ -32,6 +32,8 @@
         <!--mapper文件所在位置，默认放在resources 中-->
         <mapper resource="UserMapper.xml"/>
         <mapper resource="OrderMapper.xml"/>
+        <mapper resource="ClassMapper.xml"/>
+        <mapper resource="ProcMapper.xml"/>
         <mapper class ="com.hmrcb.mapper.UserMapper2"/>
     </mappers>
 </configuration>

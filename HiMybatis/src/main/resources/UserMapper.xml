@@ -76,4 +76,15 @@ resultMap属性指明查询返回和实体类的对应关系的类型
         insert into t_user values(#{id},#{username},#{password},#{gender},#{registTime})
     </insert>
 
+
+    <insert id="insertUser2" parameterType="User">
+        <selectKey order="BEFORE" keyProperty="id" resultType="string">
+            select replace(uuid(),'-','')
+        </selectKey>
+        insert into t_user values(#{id},#{username},#{password},#{gender},#{registTime})
+    </insert>
+
+
+    <!-- 开启二级缓存 -->
+    <cache/>
 </mapper>

@@ -1,7 +1,6 @@
 package com.hmrcb;
 
 import com.hmrcb.entity.Order;
-import com.hmrcb.entity.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -10,13 +9,12 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-//库表和实体类的栏位对应关系
-public class AppTest2 {
+// 一对一，一对多的查询
+public class AppTest3 {
 
     @Test
     public void test() throws IOException {
@@ -29,12 +27,14 @@ public class AppTest2 {
         // 3. 通过SqlSessionFactory 创建 SqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        List<Order> ls = sqlSession.selectList("com.hmrcb.mapper.OrderMapper.getOrderById");
-        List<Order> ls2 = sqlSession.selectList("com.hmrcb.mapper.OrderMapper.selectOrder",1);
-        List<Order> ls3 = sqlSession.selectList("com.hmrcb.mapper.OrderMapper.selectOrderResultMap",2);
+        List<Order> ls2 = sqlSession.selectList("com.hmrcb.mapper.ClassMapper.getClass", 1);
+        List<Order> ls3 = sqlSession.selectList("com.hmrcb.mapper.ClassMapper.getClass2", 1);
+        List<Order> ls4 = sqlSession.selectList("com.hmrcb.mapper.ClassMapper.getClass3", 1);
+        List<Order> ls5 = sqlSession.selectList("com.hmrcb.mapper.ClassMapper.getClass4", 1);
 
         System.out.println(ls2);
-        System.out.println(ls2);
         System.out.println(ls3);
+        System.out.println(ls4);
+        System.out.println(ls5);
     }
 }

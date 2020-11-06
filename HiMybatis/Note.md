@@ -45,3 +45,71 @@
 + 实体对象角度
 + 参考OrderMapper.xml
 
+### 关联表查询
+#### 一对一关联
++ 根据班级id查询班级信息(带老师的信息)
+#### 一对多关联
++ 根据根据Id查询对应的班级信息,包括学生,老师
+
+### 调用存储过程
+```odpsql
+create table p_user(
+    id int primary key auto_increment,
+    name varchar(10),
+    sex char(2)
+);
+
+insert into p_user(name,sex) values('A',"男");
+insert into p_user(name,sex) values('B',"女");
+insert into p_user(name,sex) values('C',"男");
+
+-- 创建存储过程(查询得到男性或女性的数量, 如果传入的是0就女性否则是男性)
+DELIMITER $
+CREATE PROCEDURE mybatis.ges_user_count(IN sex_id INT, OUT user_count INT)
+BEGIN
+IF sex_id=0 THEN
+SELECT COUNT(*) FROM mybatis.p_user WHERE p_user.sex='女' INTO user_count;
+ELSE
+SELECT COUNT(*) FROM mybatis.p_user WHERE p_user.sex='男' INTO user_count;
+END IF;
+END
+$
+
+-- 调用存储过程
+DELIMITER ;
+SET @user_count = 0;
+CALL mybatis.ges_user_count(1, @user_count);
+SELECT @user_count;
+
+```
+
+### 缓存
+```
+MyBatis 同样提供了一级缓存和二级缓存的支持
+一级缓存: 基于PerpetualCache 的 HashMap本地缓存，其存储作用域为 Session，当 Session flush 或 close 之后，该Session中的所有 Cache 就将清空。
+二级缓存与一级缓存其机制相同，默认也是采用 PerpetualCache，HashMap存储，不同在于其存储作用域为 Mapper(Namespace)，并且可自定义存储源。
+对于缓存数据更新机制，当某一个作用域(一级缓存Session/二级缓存Namespaces)的进行了 C/U/D 操作后，默认该作用域下所有 select 中的缓存将被clear。
+```
+```xml
+<mapper namespace="xxx">
+<!-- 开启二级缓存 -->
+<cache/>
+</mapper>
+```
++ cache属性 
+    + eviction="FIFO"  <!--回收策略为先进先出-->
+    + flushInterval="60000" <!--自动刷新时间60s-->
+    + size="512" <!--最多缓存512个引用对象-->
+    + readOnly="true"/> <!--只读-->
+
+```
+　　1. 映射语句文件中的所有select语句将会被缓存。
+
+　　2. 映射语句文件中的所有insert，update和delete语句会刷新缓存。
+
+　　3. 缓存会使用Least Recently Used（LRU，最近最少使用的）算法来收回。
+
+　　4. 缓存会根据指定的时间间隔来刷新。
+
+　　5. 缓存会存储1024个对象
+```
