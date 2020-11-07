@@ -1,4 +1,0 @@
-service\impl\UserServiceImpl.class
-dao\UserMapper.class
-domain\User.class
-service\UserServiceI.class
