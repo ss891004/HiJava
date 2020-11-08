@@ -3,41 +3,34 @@ package com.hmrcb;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import javax.sql.DataSource;
+import org.apache.commons.dbcp2.BasicDataSourceFactory;
 
-public class JdbcUtils {
-
-    private static String driver = null;
-    private static String url = null;
-    private static String username = null;
-    private static String password = null;
-
+/**
+ * @ClassName: JdbcUtils_DBCP
+ * @Description: 数据库连接工具类
+ *
+ */
+public class JdbcUtils_DBCP {
+    /**
+     * 在java中，编写数据库连接池需实现java.sql.DataSource接口，每一种数据库连接池都是DataSource接口的实现
+     * DBCP连接池就是java.sql.DataSource接口的一个具体实现
+     */
+    private static DataSource ds = null;
+    //在静态代码块中创建数据库连接池
     static{
         try{
-            //读取db.properties文件中的数据库连接信息
-            //InputStream in = JdbcUtils.class.getClassLoader().getResourceAsStream("db.properties");
-            InputStream in = new FileInputStream("/home/shishuai/IdeaProjects/HiJava/db.properties");
+            //加载dbcpconfig.properties配置文件
+           // InputStream in = JdbcUtils_DBCP.class.getClassLoader().getResourceAsStream("dbcpconfig.properties");
+            InputStream in =  new FileInputStream("/home/shishuai/IdeaProjects/HiJava/dbcpconfig.properties");
             Properties prop = new Properties();
             prop.load(in);
-
-            //获取数据库连接驱动
-            driver = prop.getProperty("driver");
-            System.out.println(driver);
-            //获取数据库连接URL地址
-            url = prop.getProperty("url");
-            System.out.printf(url);
-            //获取数据库连接用户名
-            username = prop.getProperty("username");
-            //获取数据库连接密码
-            password = prop.getProperty("password");
-
-            //加载数据库驱动
-            Class.forName(driver);
-
+            //创建数据源
+            ds = BasicDataSourceFactory.createDataSource(prop);
         }catch (Exception e) {
             throw new ExceptionInInitializerError(e);
         }
@@ -45,19 +38,19 @@ public class JdbcUtils {
 
     /**
      * @Method: getConnection
-     * @Description: 获取数据库连接对象
-     *
-     * @return Connection数据库连接对象
+     * @Description: 从数据源中获取数据库连接
+     * @return Connection
      * @throws SQLException
      */
     public static Connection getConnection() throws SQLException{
-        return DriverManager.getConnection(url, username,password);
+        //从数据源中获取数据库连接
+        return ds.getConnection();
     }
 
     /**
      * @Method: release
      * @Description: 释放资源，
-     *     要释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象，存储查询结果的ResultSet对象
+     * 释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象，存储查询结果的ResultSet对象
      *
      * @param conn
      * @param st
@@ -84,7 +77,7 @@ public class JdbcUtils {
 
         if(conn!=null){
             try{
-                //关闭Connection数据库连接对象
+                //将Connection连接对象还给数据库连接池
                 conn.close();
             }catch (Exception e) {
                 e.printStackTrace();
