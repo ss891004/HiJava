@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * JDBC中使用事务来模似转帐
  * create table account(
  * id int primary key auto_increment,
  * name varchar(40),
@@ -17,6 +16,7 @@ import java.sql.SQLException;
  * insert into account(name,money) values('B',1000);
  * insert into account(name,money) values('C',1000);
  */
+//事务范例
 public class HiTx {
 
     /**
@@ -48,7 +48,7 @@ public class HiTx {
     }
 
     /**
-     * @Method: testTransaction1
+     * @Method: testTransaction2
      * @Description: 模拟转账过程中出现异常导致有一部分SQL执行失败后让数据库自动回滚事务
      */
     public void testTransaction2() {
@@ -78,7 +78,7 @@ public class HiTx {
     }
 
     /**
-     * @Method: testTransaction1
+     * @Method: testTransaction3
      * @Description: 模拟转账过程中出现异常导致有一部分SQL执行失败时手动通知数据库回滚事务
      */
     public void testTransaction3() {

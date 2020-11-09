@@ -1,21 +1,21 @@
-## 笔记
+## Tomcat服务器
 
-+ 新建一个web项目
+## Servlet
+### 新建一个web项目
++ 项目结构
+webapp
+-WEB-INF
+--classes
+--lib
+--web.xml
 
-+ 一个类，继承 Servlet
+### Servlet概念
 
-+ 部署到服务器
-
- ![Tomcat](img\1.png)
-
-```
-Tomcat Server：tomcat的路径
-Deployment：webapp所在的路径
-Contex Path：上下文路径。会自己识别出来，一般我们不改这个。
-Server Port：默认是8080，可以改成其它
-VM options: 可选的。没有参数就不填
-```
-
+### 示例
++ 包
++ 编写
++ 部署
++ 配置
 
 ### Servlet接口
 ```
@@ -51,3 +51,33 @@ doDelete，用于 HTTP DELETE 请求
 init 和 destroy，用于管理 servlet 的生命周期内保存的 资源 
 getServletInfo，servlet 使用它提供有关其自身的信息 
 ```
+
+### 部署到服务器
+ ![Tomcat](img\1.png)
+```
+Tomcat Server：tomcat的路径
+Deployment：webapp所在的路径
+Contex Path：上下文路径。会自己识别出来，一般我们不改这个。
+Server Port：默认是8080，可以改成其它
+VM options: 可选的。没有参数就不填
+```
+
+## IDEA创建web项目
+
+## HTTP协议
+
+## Servlet详解
+
+## Servlet应用
+
+## Servlet生命周期
+
+## ServletContext 
+
+## 转发和重定向
+
+## 状态管理
+### Cookie
+### Session
+
+## 过滤器

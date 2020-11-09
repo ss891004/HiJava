@@ -4,6 +4,7 @@ package com.hmrcb.utils;
 import java.sql.SQLException;
 import java.util.List;
 
+//针对单个实体对象CRUD操作
 public class AccountDao {
 
     public void add(Account account) throws SQLException{

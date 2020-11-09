@@ -8,22 +8,19 @@ import java.sql.Savepoint;
 
 
 /**
- * @ClassName: TransactionDemo1
- * @Description:
- * JDBC中使用事务来模似转帐
 create table account(
 id int primary key auto_increment,
 name varchar(40),
 money float
 );
+
 insert into account(name,money) values('A',1000);
 insert into account(name,money) values('B',1000);
 insert into account(name,money) values('C',1000);
-
- *
  */
 public class HiTx2 {
 
+    //设置事务回滚点
     public void testTransaction1() {
         Connection conn = null;
         PreparedStatement st = null;

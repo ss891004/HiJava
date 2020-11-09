@@ -17,6 +17,7 @@ public class HelloServlet3 extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doGet(req, resp);
         resp.setStatus(302);//设置服务器的响应状态码
+        //注意context path
         resp.setHeader("Location", "/index.jsp");
 
         //resp.setContentType("text/html;charset=UTF-8");

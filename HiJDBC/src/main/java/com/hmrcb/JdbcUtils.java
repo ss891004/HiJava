@@ -1,5 +1,6 @@
 package com.hmrcb;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -20,7 +21,8 @@ public class JdbcUtils {
         try{
             //读取db.properties文件中的数据库连接信息
             //InputStream in = JdbcUtils.class.getClassLoader().getResourceAsStream("db.properties");
-            InputStream in = new FileInputStream("/home/shishuai/IdeaProjects/HiJava/db.properties");
+            //InputStream in = new FileInputStream("/home/shishuai/IdeaProjects/HiJava/db.properties");
+            InputStream in =   new BufferedInputStream(new FileInputStream("E:\\project\\HiJava\\HiJDBC\\src\\main\\java\\com\\hmrcb\\db.properties"));
             Properties prop = new Properties();
             prop.load(in);
 
