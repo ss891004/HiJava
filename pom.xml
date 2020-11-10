@@ -15,6 +15,7 @@
     <module>HiSSM</module>
     <module>HiSM</module>
     <module>HiJDBC</module>
+      <module>HiSpring-Druid</module>
   </modules>
 
   <parent>
