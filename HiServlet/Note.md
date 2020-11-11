@@ -1,15 +1,32 @@
 ## Tomcat服务器
++ tomcat 目录结构
 
-## Servlet
+## IDEA创建web项目
+
 ### 新建一个web项目
 + 项目结构
+```
 webapp
 -WEB-INF
 --classes
 --lib
 --web.xml
+```
++ 部署在tomcat 中
 
-### Servlet概念
+![1](./img/1.png )
++ 注意context path 和 部署目录
+```
+Tomcat Server：tomcat的路径
+Deployment：webapp所在的路径
+Contex Path：上下文路径。会自己识别出来，一般我们不改这个。
+Server Port：默认是8080，可以改成其它
+VM options: 可选的。没有参数就不填
+```
+
+## HTTP协议
+
+## Servlet概念
 
 ### 示例
 + 包
@@ -52,32 +69,37 @@ init 和 destroy，用于管理 servlet 的生命周期内保存的 资源
 getServletInfo，servlet 使用它提供有关其自身的信息 
 ```
 
-### 部署到服务器
- ![Tomcat](img\1.png)
-```
-Tomcat Server：tomcat的路径
-Deployment：webapp所在的路径
-Contex Path：上下文路径。会自己识别出来，一般我们不改这个。
-Server Port：默认是8080，可以改成其它
-VM options: 可选的。没有参数就不填
-```
+### 两种配置方式
++ web.xml
++ 注解
 
-## IDEA创建web项目
-
-## HTTP协议
-
-## Servlet详解
 
 ## Servlet应用
++ request对象
++ response对象
+
+## 转发和重定向
+
 
 ## Servlet生命周期
 
 ## ServletContext 
 
-## 转发和重定向
 
 ## 状态管理
 ### Cookie
 ### Session
 
 ## 过滤器
+
+
+## Java Web 项目打包
+
++ 单模块的maven项目
+![a](./img/2.png)
+
++ 编译
+![b](./img/3.png)
+  
++ 查看生成war
+![c](./img/4.png)
