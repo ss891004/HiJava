@@ -76,12 +76,53 @@ getServletInfo，servlet 使用它提供有关其自身的信息
 
 ## Servlet应用
 + request对象
+    + 登录注册功能
 + response对象
 
-## 转发和重定向
++ JSP页面乱码问题
+``` 
+<%@ page language="java" pageEncoding="gb2312"%>
+<%@ page contentType="text/html;charset=iso8859-1"%>
+<html>
+<head>
+<title>JSP的中文处理</title>
+<meta http-equiv="Content-Type" content="text/html charset=gb2312">
+</head>
+<body>
+<%out.print("JSP的中文处理");%>
+</body>
+</html>
 
+第一处<%@ page language="java" pageEncoding="gb2312"%>的编码格式为jsp文件的存储格式。IDE会根据这个编码格式保存文件。并编译jsp文件，包括里面的汉字。
+第二处编码为解码格式。因为存为gb2312的文件被解码为iso8859-1，这样如有中文肯定出乱码。也就是必须一致。而第二处所在的这一行，可以没有。缺省也是使用iso8859-1的编码格式。所以如果没有这一行的话，也会出现乱码。必须一致才可以。
+第三处编码为控制浏览器的解码方式。如果前面的解码都一致并且无误的话，这个编码格式用不用设置都可以。有的网页出现乱码，就是因为浏览器不能确定使用哪种编码格式。因为页面有时候会嵌入页面，导致浏览器混淆了编码格式出现了乱码。
+```
++ jsp中form表单传值
+
+
++ jsp页面编译流程
+
+
+## 转发和重定向
+### 转发
++ req.getRequestDispatcher("/login.jsp").forward(req,resp);
++ 转发的作用在服务器端,将请求发送给服务器上的其他资源,地址栏不发生变化,以共同完成一次请求的参数.
++ 转发表示一次请求,在服务器内部跳转,可以共享同一次request作用域中的数据.
+    + 存数据: request.setAttribute(key, value)
+    + 取数据: request.getAttribute(key)
+    
+### 重定向
++  resp.sendRedirect("/login.jsp");
++ 重定向作用在客户端,客户端讲请求发送给服务器后,服务器响应给客户端一个新的请求地址,客户端重新发送请求.
++ 重定向时,地址栏改变,代表客户端重新发送的请求,  属于两次请求.
+    + 传递参数: 通过在URI中拼接传递 ("/login?username=xx&password=yy")
+    + 获取参数:  req.getParameter("username");
++ 重定向是,两次跳转之间的request范围的信息丢失,重定向可以执行任意资源.
 
 ## Servlet生命周期
++ 实例化 -> 初始化 -> 处理请求响应 -> 销毁
+
+## 线程安全问题
 
 ## ServletContext 
 
