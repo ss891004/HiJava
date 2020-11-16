@@ -121,6 +121,7 @@
     <delete id="deleteManyUser" parameterType="java.util.List">
         <!--delete from t_user where id in (x,x,x,x,x,x)-->
         delete from t_user where id in
+        <!-- collection 容器类型, open 起始符 close 结束符  item 当前项 separator 分隔符  index 下标,从0开始 -->
         <foreach collection="list" open="(" close=")" item="id9" separator=",">
             #{id9}
         </foreach>

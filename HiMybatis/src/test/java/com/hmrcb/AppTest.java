@@ -16,10 +16,9 @@ import java.io.InputStream;
 import java.util.Date;
 
 //表的CRUD
-public class AppTest 
-{
+public class AppTest {
     @Test
-    public  void test1() throws IOException {
+    public void test1() throws IOException {
         // 1. 加载配置文件
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
@@ -41,7 +40,7 @@ public class AppTest
     }
 
     @Test
-    public  void test2() throws IOException {
+    public void test2() throws IOException {
         // 1. 加载配置文件
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
@@ -53,17 +52,18 @@ public class AppTest
 
         //新增用户
         User new_user = new User(null, "shine_222", "00000", true, new Date());
-        sqlSession.insert("com.hmrcb.mapper.UserMapper.insertUser",new_user);
+        sqlSession.insert("com.hmrcb.mapper.UserMapper.insertUser", new_user);
         sqlSession.commit();
         sqlSession.close();
     }
 
     /**
      * 测试注解的方式
+     *
      * @throws IOException
      */
     @Test
-    public  void test3() throws IOException {
+    public void test3() throws IOException {
         // 1. 加载配置文件
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
