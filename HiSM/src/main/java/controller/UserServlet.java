@@ -26,6 +26,7 @@ public class UserServlet extends HttpServlet {
     //处理业务逻辑的userService
     private UserServiceI userService;
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //获取所有的用户信息
@@ -34,11 +35,13 @@ public class UserServlet extends HttpServlet {
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.doGet(request, response);
     }
 
+    @Override
     public void init() throws ServletException {
         //在Servlet初始化时获取Spring上下文对象(ApplicationContext)
         ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
