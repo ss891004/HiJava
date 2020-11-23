@@ -17,6 +17,7 @@
         <module>HiJDBC</module>
         <module>HiSpring-Druid</module>
         <module>HiLayUI</module>
+        <module>HiSpringMVC</module>
     </modules>
 
     <parent>
