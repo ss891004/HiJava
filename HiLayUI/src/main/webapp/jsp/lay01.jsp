@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" href="layui/css/layui.css">
-    <script src="layui/layui.js"></script>
+    <title>响应式布局</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.js"></script>
 </head>
 <body>
     <div class="layui-container">

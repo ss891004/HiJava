@@ -1,5 +1,8 @@
+## C/S 和 B/S
+
 ## Tomcat服务器
 + tomcat 目录结构
++ web.xml , server.xml , context.xml
 
 ## IDEA创建web项目
 
