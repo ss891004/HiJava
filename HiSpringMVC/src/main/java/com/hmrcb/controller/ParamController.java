@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 
+//接收请求参数
 @Controller
 @RequestMapping("/param")
 public class ParamController {
 
 
+    // 同名填充
     // http://xxxx/param/test1?id=1&name=shine&gender=true&birth=2020/12/12 12:13:20
     @RequestMapping("/test1")
     public String test1(Integer id, String name, Boolean gender, Date birth){

@@ -18,6 +18,7 @@
         <module>HiSpring-Druid</module>
         <module>HiLayUI</module>
         <module>HiSpringMVC</module>
+        <module>HiSpringMVC1</module>
     </modules>
 
     <parent>
