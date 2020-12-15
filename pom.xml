@@ -19,6 +19,7 @@
         <module>HiLayUI</module>
         <module>HiSpringMVC</module>
         <module>HiSpringMVC1</module>
+        <module>HiEMS</module>
     </modules>
 
     <parent>
