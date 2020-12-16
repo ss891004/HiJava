@@ -1,15 +1,59 @@
-<!DOCTYPE html>
-<!--次文件的保存格式是GBK-->
-<%@ page contentType="text/html; charset=GBK"%>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <title><%out.print("JSP的中文处理");%></title>
+    <title>鐧诲綍椤甸潰</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
+
 <body>
-    <form action="/login" method="post">
-        用户名:<input type="text" name="username" /><br/>
-        密码:<input type="password" name="password"><br/>
-        <input type="submit" value="登录" />
-    </form>
+<div id="wrap">
+    <div id="top_content">
+        <div id="header">
+            <div id="rightheader">
+                <p>
+                    2009/11/20 <br/>
+                </p>
+            </div>
+            <div id="topheader">
+                <h1 id="title">
+                    <a href="#">main</a>
+                </h1>
+            </div>
+            <div id="navigation"></div>
+        </div>
+        <div id="content">
+            <p id="whereami"></p>
+            <h1>login</h1>
+            <form action="/manager/empManagerLogin" method="post">
+                <table cellpadding="0" cellspacing="0" border="0"
+                       class="form_table">
+                    <tr>
+                        <td valign="middle" align="right">username:</td>
+                        <td valign="middle" align="left"><input type="text"
+                                                                class="inputgri" name="username"/></td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">password:</td>
+                        <td valign="middle" align="left"><input type="password"
+                                                                class="inputgri" name="password"/></td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">validateCode:</td>
+                        <td valign="middle" align="left">
+                        <input type="text" class="inputgri" name="inputVcode"/>
+                        <img src="/createCode" />
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    <input type="submit" class="button" value="Submit &raquo;"/>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer_bg">ABC@126.com</div>
+    </div>
+</div>
 </body>
 </html>

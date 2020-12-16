@@ -1,5 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<body>
-<h2>Hello World!eeeeee</h2>
-</body>
+  <head>
+    <title>$Title$</title>
+  </head>
+  <body>
+  $END$
+  </body>
 </html>

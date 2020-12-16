@@ -147,3 +147,31 @@ getServletInfo，servlet 使用它提供有关其自身的信息
   
 + 查看生成war
 ![c](./img/4.png)
+
+
+## 综合项目
++ 对emp表进行CRUD操作
++ jstl 
+
+```
+DAO
+    表
+    实体
+    DAO接口
+    DAO实现
+Service
+    接口
+    实现(调用DAO实现类,并控制事务)
+Controller
+    收集请求中的数据
+    调用业务功能(service实现类)
+    在合适的作用域中存储数据
+    流程跳转(forward sendRedirect)
+JSP
+    获取数据
+    渲染html
+Filter
+    编码控制器
+    检查控制器
+
+```
