@@ -1,0 +1,247 @@
+<?s01_xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
+<com.hm.mapper namespace="hm.mybatis.com.hm.mapper.OrderMapper">
+
+    <select id="getById" resultType="hm.mybatis.com.hm.model.OrderModel">
+        <![CDATA[
+  SELECT a.id,a.user_id as userId,a.create_time createTime,a.up_time upTime
+  FROM t_order a
+  WHERE a.id = #{value}
+        ]]>
+    </select>
+
+    <select id="getById2" resultType="hm.mybatis.com.hm.model.OrderModel">
+        <![CDATA[ SELECT a.id,a.user_id,a.create_time,a.up_time FROM t_order a WHERE a.id = #{value} ]]>
+    </select>
+
+    <resultMap id="orderModelMap2" type="hm.mybatis.com.hm.model.OrderModel">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+    </resultMap>
+
+    <select id="getById3" resultMap="orderModelMap2">
+        <![CDATA[
+    SELECT a.id,a.user_id,a.create_time,a.up_time FROM t_order a WHERE a.id = #{value}
+    ]]>
+    </select>
+
+    <resultMap id="orderModelMap4" type="hm.mybatis.com.hm.model.OrderModel">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <result column="name" property="user2Model.name"/>
+<!--        使用到了级联赋值，多级之间用.进行引用，此处我们只有一级，可以有很多级。-->
+        <result column="u_id" property="user2Model.id"/>
+    </resultMap>
+
+    <select id="getById4" resultMap="orderModelMap4">
+        <![CDATA[
+    SELECT
+        a.id,
+        a.user_id,
+        a.create_time,
+        a.up_time,
+        b.name,
+        b.id as u_id
+    FROM
+        t_order a,
+        t_user b
+    WHERE
+        a.user_id = b.id
+    AND a.id = #{value}
+    ]]>
+    </select>
+
+
+    <resultMap id="orderModelMap5" type="hm.mybatis.com.hm.model.OrderModel">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <result column="name" property="user2Model.name"/>
+<!--        一对多的关系，使用 association-->
+        <association property="user2Model" >
+            <id column="user_id" property="id"/>
+            <result column="name" property="name" />
+            <result column="age" property="age"/>
+        </association>
+    </resultMap>
+
+    <select id="getById5" resultMap="orderModelMap5">
+        <![CDATA[
+    SELECT
+        a.id,
+        a.user_id,
+        a.create_time,
+        a.up_time,
+        b.name,
+        b.id as u_id, b.age
+    FROM
+        t_order a,
+        t_user b
+    WHERE
+        a.user_id = b.id
+    AND a.id = #{value}
+    ]]>
+    </select>
+
+
+<!--    先按照订单id查询订单数据，然后在通过订单中user_id去用户表查询用户数据，通过两次查询，组合成目标结果-->
+
+    <resultMap id="orderModelMap6" type="hm.mybatis.com.hm.model.OrderModel">
+        <id column="id" property="id"/>
+        <result column="u_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <result column="name" property="user2Model.name"/>
+        <association property="user2Model" select="com.ss.com.hm.mapper.UserMapper2.getByUserId6" column="u_id" >
+        </association>
+    </resultMap>
+
+
+    <select id="getById6" resultMap="orderModelMap6">
+        <![CDATA[
+    SELECT
+        a.id,
+        a.user_id u_id,
+        a.create_time,
+        a.up_time
+    FROM
+        t_order a
+    WHERE
+         a.id = #{value}
+    ]]>
+    </select>
+
+
+
+
+    <resultMap id="orderModelMap7" type="hm.mybatis.com.hm.model.OrderModel">
+        <id column="id" property="id"/>
+        <result column="u_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <result column="name" property="user2Model.name"/>
+        <association property="user2Model" select="hm.mybatis.com.hm.mapper.UserMapper2.getByUserId7" column="{xx1=u_id,xx2=up_time}" >
+        </association>
+    </resultMap>
+
+
+    <select id="getById7" resultMap="orderModelMap7">
+        <![CDATA[
+    SELECT
+        a.id,
+        a.user_id u_id,
+        a.create_time,
+        a.up_time
+    FROM
+        t_order a
+    WHERE
+         a.id = #{value}
+    ]]>
+    </select>
+
+<!--    一对多的关系，使用 collection-->
+    <resultMap id="orderModelMap8" type="hm.mybatis.com.hm.model.OrderModel">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <collection property="xxx" ofType="hm.mybatis.com.hm.model.OrderDetailModel">
+            <id column="orderDetailId" property="id"/>
+            <result column="order_id" property="orderId"/>
+            <result column="goods_id" property="goodsId"/>
+            <result column="num" property="num"/>
+            <result column="total_price" property="totalPrice"/>
+        </collection>
+    </resultMap>
+
+<!--
+注意上面的getById1中的sql，这个sql中使用到了t_order和t_order_detail连接查询，这个查询会返回多条结果，但是最后结果按照orderModelMap1进行映射，最后只会返回一个OrderModel对象，关键在于collection元素，这个元素用来定义集合中元素的映射关系，有2个属性需要注意：
+
+property：对应的属性名称
+ofType：集合中元素的类型，此处是OrderDetailModel
+原理是这样的，注意orderModelMap1中有个
+
+<id column="id" property="id"/>
+查询出来的结果会按照这个配置中指定的column进行分组，即按照订单id进行分组，每个订单对应多个订单明细，订单明细会按照collection的配置映射为ofType元素指定的对象。
+
+实际resultMap元素中的id元素可以使用result元素代替，只是用id可以提升性能，mybatis可以通过id元素配置的列的值判断唯一一条记录，如果我们使用result元素，那么判断是否是同一条记录的时候，需要通过所有列去判断了，所以通过id可以提升性能，使用id元素在一对多中可以提升性能，在单表查询中使用id元素还是result元素，性能都是一样的。
+
+-->
+    <select id="getById8" resultMap="orderModelMap8">
+        <![CDATA[
+    SELECT
+        a.id ,
+        a.user_id,
+        a.create_time,
+        a.up_time,
+        b.id orderDetailId,
+        b.order_id,
+        b.goods_id,
+        b.num,
+        b.total_price
+    FROM
+        t_order a,
+        t_order_detail b
+    WHERE
+        a.id = b.order_id
+        AND a.id = #{value}
+    ]]>
+    </select>
+
+<!--    通过2次查询，然后对结果进行分装，先通过订单id查询订单信息，然后通过订单id查询订单明细列表，然后封装结果。-->
+
+    <resultMap id="orderModelMap9" type="hm.mybatis.com.hm.model.OrderModel">
+        <id column="id" property="id"/>
+        <result column="u_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="up_time" property="upTime"/>
+        <result column="name" property="user2Model.name"/>
+        <collection property="xxx" select="hm.mybatis.com.hm.mapper.OrderDetailMapper.getListByOrderId1" column="id"/>
+    </resultMap>
+
+    <select id="getById9" resultMap="orderModelMap9">
+        <![CDATA[
+    SELECT
+        a.id ,
+        a.user_id u_id,
+        a.create_time,
+        a.up_time
+    FROM
+        t_order a
+    WHERE
+        a.id = #{value}
+    ]]>
+    </select>
+
+
+
+
+    <resultMap id="orderModelMap10" type="hm.mybatis.com.hm.model.OrderModel" autoMapping="true">
+    </resultMap>
+    <select id="getById10" resultMap="orderModelMap10">
+        <![CDATA[
+    SELECT
+        a.id,
+        a.user_id userId,
+        a.create_time createTime,
+        a.up_time upTime
+    FROM
+        t_order a
+    WHERE
+        a.id = #{value}
+    ]]>
+    </select>
+
+
+
+
+
+
+
+</com.hm.mapper>

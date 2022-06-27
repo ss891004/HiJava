@@ -1,0 +1,8 @@
+swagger:
+  enabled: true
+
+server:
+  port: 9999
+
+knife4j:
+  enable: true

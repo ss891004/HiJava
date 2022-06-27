@@ -1,0 +1,17 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 单例bean，scope设置为singleton -->
+    <bean id="singletonBean" class="s01_scope.BeanScopeModel" scope="singleton">
+        <constructor-arg index="0" value="singleton"/>
+    </bean>
+
+    <bean id="prototypeBean" class="s01_scope.BeanScopeModel" scope="prototype">
+        <constructor-arg index="0" value="prototype"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,51 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 构造注入 -->
+    <!-- 第一种根据index参数下标设置 -->
+    <!-- 第二种根据参数名字设置 -->
+    <!-- 第三种根据参数类型设置 -->
+    <!--    constructor-arg用于指定构造方法参数的值-->
+    <!--    index：构造方法中参数的位置，从0开始，依次递增-->
+    <!--    value：指定参数的值-->
+    <!--    ref：当插入的值为容器内其他bean的时候，这个值为容器中对应bean的名称-->
+    <bean id="student1" class="s01_xml.Student">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="shine"/>
+        <constructor-arg name="sex" value="male"/>
+        <constructor-arg name="age" value="19"/>
+    </bean>
+
+    <!-- 调用默认构造函数-->
+    <bean id="student2" class="s01_xml.Student">
+    </bean>
+    <!--============================================================-->
+    <!-- 通过工厂静态有参方法创建bean对象 -->
+    <bean id="student4" name="" class="s01_xml.StudentStaticFactory" factory-method="buildStudent1"/>
+
+    <!-- 通过工厂静态无参方法创建bean对象 -->
+    <bean id="student3" name="" class="s01_xml.StudentStaticFactory" factory-method="buildStudent2">
+        <constructor-arg index="0" value="hahah"/>
+        <constructor-arg index="1" value="10"/>
+    </bean>
+    <!--============================================================-->
+
+    <bean id="sf" class="s01_xml.StudentFactory"/>
+
+    <bean id="student5" factory-bean="sf" factory-method="buildUser2">
+        <constructor-arg index="0" value="xhxhxh"/>
+        <constructor-arg index="1" value="20"/>
+
+    </bean>
+
+    <bean id="student6" factory-bean="sf" factory-method="buildUser1"/>
+    <!--============================================================-->
+
+    <bean id="createByFactoryBean" class="s01_xml.StudentFactoryBean"/>
+
+
+</beans>

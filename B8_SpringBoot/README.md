@@ -1,0 +1,197 @@
+
+
++ 创建一个maven基础项目
+  + mvn archetype:generate -DgroupId=springboot -DartifactId=springboot-helloworld -Darchetype ArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
++ Spring Boot项目主要的jar包
+  + 父pom.xml 文件
+```xml
+<parent>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-parent</artifactId>
+  <version>2.6.7</version>
+</parent>
+```
+  + 子pom.xml 文件，可以添加其他 starter 依赖
+```xml
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+  </dependency>
+```
+
++ Controller
++ 启动应⽤类
++ application-{profile}.properties
+  + application-dev.properties 、 application-test.properties 、 application-prod.properties
+    + java -jar xxx.jar
+    + java -jar xxx.jar --spring.profiles.active=test
+    + java -jar xxx.jar --spring.profiles.active=prod
+
++ ⾃动配置
++ 优先级排列：
+  1.命令⾏参数
+  2.java:comp/env ⾥的 JNDI 属性
+  3.JVM 系统属性
+  4.操作系统环境变量
+  5.RandomValuePropertySource 属性类⽣成的 random.* 属性
+  6.应⽤以外的 application.properties（或 yml）⽂件
+  7.打包在应⽤内的 application.properties（或 yml）⽂件
+  8.在应⽤ @Configuration 配置类中，⽤ @PropertySource 注解声明的属性⽂件
+  9.SpringApplication.setDefaultProperties 声明的默认属性
+
+## spring boot 底层于原理
++ spring-boot-starter-parent
++ spring-boot-dependencies
++ 引导类
+  + @SpringBootApplication
+    + @SpringBootConfiguration
+      + 用于定义一个Spring Boot的配置类(配置类 等同 配置文件)引用了 @Configuration 注解，是Spring底层的一个注解，用于定义 Spring 的配置类。 配置类也是容器中的一个组件 @Component。
+    + @EnableAutoConfiguration  
+      + 告诉Spring Boot开启自动配置功能，这样Spring Boot会自动根据你导入的依赖jar包来自动配置项目。
+    + @AutoConfigurationPackage
+      + 会将引导类（@SpringBootApplication标注的类）所在的包及下面所有子包里面的所有组件扫描到Spring容器；
+    + @Import({AutoConfigurationImportSelector.class})
+      + 将所有需要导入的组件以全类名的方式返回; 这些组件就会被添加到容器中 会给容器导入非常多的自动配置类(xxxxAutoConfiguration),就是导入并配置好当前项目中所需要的组件,省去我们手动编写配置去注入组件.
++ 自动配置
+  + 在启动的时候从(spring-boot-autoconfigure-x.y.z.jar) 类路径下的META-INF/spring.factories中获取EnableAutoConfiguration指定的值，将这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作
+
+## spring boot 核心配置
++ application.yml
++ YAML
++ @ConfigurationProperties
++ @Value  
++ @PropertySource
+  + @PropertySource(value = {"classpath:emp.properties"})
++ @ImportResource
+  + @ImportResource(locations = {"classpath:spring01.xml"})
++ 自定义配置类向容器注入组件
+  + 使用 @Configuration 配置类，来表示对应Spring配置文件
+  + 使用 @Bean 向容器中注入组件对象
++ Profile 多环境支持
+  + 激活指定profile
+    + spring.profiles.active=dev    (yml文件)
+    + --spring.profiles.active=dev  (命令行)
+
++ 配置文件位置
+  + file:./config/ 当前项目的config目录下（最高级别）
+  + file:./ 当前项目的根目录下
+  + classpath:/config/ 类路径的config目录下
+  + classpath:/ 类路径的根目录下（最低级别）
+
+
+## 全局配置文件 application.yml
+
+## starter pom
+
+## @value @ConfigurationProperties
+
+## Profile
+
+
+## 4. 日志
+
+## 5. 异步
+
+## 6. 整合quartz
+
+## 7. 邮件发送
+
+
+## 8. Thymeleaf
+
+## 9. spring-boot-autoconfigure 自动配置
+
+
+
+## 10. redis
++ 缓存中间件
+
+数据类型
+Redis中所有的数据都是字符串。命令不区分大小写，key是区分大小写的。
+五种数据类型:
+  String：<key, value>
+  Hash： <key，fields-values>
+  List：有顺序可重复
+  Set：无顺序不可重复
+  Sorted Sets (zset) ：有顺序，不能重复
+
+String：<key, value>
+  set、get
+  incr：加一（生成id）
+  decr：减一
+  append：追加内容
+  del key_name ：删除指定
+  keys * ： 查看所有的 key
+
+Hash：<key，fields-values>
+  相当于一个key对于一个Map，Map中还有key-value, 使用hash对key进行归类。
+  Hset：向hash中添加内容
+  Hget：从hash中取内容
+
+List：有顺序可重复
+  lpush：向List中左边添加元素
+  lrange：查询指定范围的所有元素
+  rpush：向List中右边添加元素
+  lpop：弹出List左边第一个元素
+  rpop：弹出List右边第一个元素
+
+Set：元素无顺序，不能重复
+  sadd：添加一个或多个元素到集合中
+  smembers：获取所有元素
+  srem：移除指定的元素   
+
+
+SortedSet（zset）：有顺序，不能重复
+  zadd key值 元素得分 元素：添加一个或多个元素到有序列set中，按元素得分由小到大排列
+  zrange：查询指定范围的所有元素
+  zrem：移除指定的元素
+
+
+## SpringBoot 自动配置的原理
++ SpringApplication 
+
+
+## 多数据源
++ 通过包名
++ 通过注解
++ 2个数据库
+  + 配置2个数据源
+  + 创建配置类
+    + 创建datasource
+    + 创建sqlsessionfactory
+    + 创建datasourcetransactionManger
+    + 创建sqlsessiontemplate
++ @primary
+
+## solr
+
+
+# 多环境
++ application-dev.properties
++ application-test.properties
++ application-prod.properties
+
++ application.properties
+  + spring.profiles.active=test
+
++ java -jar xxx.jar --spring.profiles.active=test
+
++ application.properties 中配置通⽤内容，并设置 spring.profiles.active=dev ，以开发环境为默认配置
++ application-{profile}.properties 中配置各个环境不同的内容
++ 通过命令⾏⽅式去激活不同环境的配置
+
+    REST ,要明⽩五个关键要素：
+  资源（Resource）
+  资源的表述（Representation）
+  状态转移（State Transfer）
+  统⼀接⼝（Uniform Interface）
+  超⽂本驱动（Hypertext Driven）
+  6 个主要特性：
+  ⾯向资源（Resource Oriented）
+  可寻址（Addressability）
+  连通性（Connectedness）
+  ⽆状态（Statelessness）
+  统⼀接⼝（Uniform Interface）
+  超⽂本驱动（Hypertext Driven）

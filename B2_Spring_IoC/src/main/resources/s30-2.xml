@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="car1" class="s30_BeanLife.Car">
+        <property name="name" value="奥迪"/>
+    </bean>
+    <bean id="car2" class="s30_BeanLife.Car">
+        <property name="name" value="保时捷"/>
+    </bean>
+
+    <bean id="car3" parent="car1"/>
+
+    <bean id="user" class="s30_BeanLife.User">
+        <property name="name" value="大众"/>
+        <property name="car" ref="car2"/>
+    </bean>
+
+</beans>
+

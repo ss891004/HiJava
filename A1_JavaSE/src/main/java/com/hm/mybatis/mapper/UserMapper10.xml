@@ -1,0 +1,169 @@
+<?s01_xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
+<com.hm.mapper namespace="hm.mybatis.com.hm.mapper.UserMapper10">
+
+    <cache/>
+
+<select id="getList1" resultType="hm.mybatis.com.hm.model.UserModel" flushCache="true">
+    select * from t_user
+    where 1=1
+    <if test="id!=null">
+        and id=#{id}
+    </if>
+    <if test="name!=null and name.toString()!=''">
+        and name=#{name}
+    </if>
+    <if test="age!=null">
+        and age=#{age}
+    </if>
+</select>
+
+
+
+<!--
+choose内部的条件满足一个，choose内部的sql拼接就会结束。
+otherwise属于可选的，当所有条件都不满足的时候，otherwise将起效。
+-->
+    <select id="getList2" resultType="hm.mybatis.com.hm.model.UserModel">
+        select * from t_user where 1=1
+        <choose>
+            <when test="id!=null">
+                and id=#{id}
+            </when>
+            <when test="name!=null and name.toString()!=''">
+                and name=#{name}
+            </when>
+            <when test="age!=null">
+                and age=#{age}
+            </when>
+        </choose>
+    </select>
+
+
+    <select id="getList3" resultType="hm.mybatis.com.hm.model.UserModel">
+        select * from t_user
+        <where>
+            <choose>
+                <when test="id!=null">
+                    and id=#{id}
+                </when>
+                <when test="name!=null and name.toString()!=''">
+                    and name=#{name}
+                </when>
+                <when test="age!=null">
+                    and age=#{age}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <update id="update1" >
+        update t_user
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="age!=null">
+                age=#{age},
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+
+
+    <select id="getList4" resultType="hm.mybatis.com.hm.model.UserModel" parameterType="map">
+        SELECT id,name,age FROM t_user
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="name!=null and name.toString()!=''">
+                AND name = #{name}
+            </if>
+            <if test="age!=null">
+                AND age = #{age}
+            </if>
+        </trim>
+    </select>
+
+    <update id="update2" parameterType="hm.mybatis.com.hm.model.UserModel">
+        UPDATE t_user
+        <trim prefix="SET" prefixOverrides="," suffixOverrides=",">
+            <if test="name!=null">
+                name = #{name},
+            </if>
+            <if test="age!=null">
+                age = #{age},
+            </if>
+        </trim>
+        <where>
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+        </where>
+    </update>
+
+
+
+    <select id="getList5" resultType="hm.mybatis.com.hm.model.UserModel" parameterType="map">
+        SELECT id,name,age FROM t_user
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="name!=null and name.toString()!=''">
+                AND name = #{name}
+            </if>
+            <if test="age!=null">
+                AND age = #{age}
+            </if>
+            <if test="idList!=null and idList.size()>=1">
+                <foreach collection="idList" item="id" open="AND id in (" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertBatch" parameterType="list">
+        INSERT INTO t_user (id,name,age) VALUES
+        <foreach collection="collection" separator="," item="item">
+            (#{item.id}, #{item.name}, #{item.age})
+        </foreach>
+    </insert>
+
+    <sql id="findSql">
+        <where>
+            <if test="likeName!=null and likeName.trim()!=''">
+                <bind name="nameLike" value="'%'+likeName.trim()+'%'" />
+                AND name like #{nameLike}
+            </if>
+
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="name!=null and name.toString()!=''">
+                AND name = #{name}
+            </if>
+            <if test="age!=null">
+                AND age = #{age}
+            </if>
+            <if test="idList!=null and idList.size()>=1">
+                <foreach collection="idList" item="id" open="AND id in (" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+    <select id="getList1Count" resultType="int" parameterType="map">
+        SELECT count(*) FROM t_user
+        <include refid="findSql" />
+    </select>
+
+
+
+</com.hm.mapper>

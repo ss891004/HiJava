@@ -1,0 +1,59 @@
+<?s01_xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
+<com.hm.mapper namespace="hm.mybatis.com.hm.mapper.UserMapper6">
+
+    <insert id="insertUser" parameterType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+        INSERT INTO t_user2 (id,name,age,salary,sex) VALUES (#{id},#{name},#{age},#{salary},#{sex})
+         ]]>
+    </insert>
+
+    <!-- 插入的时候获取值增值，必须需指定2个属性
+        useGeneratedKeys：设置为true
+        keyProperty：参数对象中的属性，插入成功之后会将值增值设置给这个属性
+     -->
+    <insert id="insertUser2" parameterType="hm.mybatis.com.hm.model.UserModel2" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO t_user2 (name,age,salary,sex) VALUES (#{name},#{age},#{salary},#{sex})
+         ]]>
+    </insert>
+
+    <!--
+
+    关键代码是selectKey元素包含的部分，这个元素内部可以包含一个sql，这个sql可以在插入之前或者插入之后运行（之前还是之后通过order属性配置），
+    然后会将sql运行的结果设置给keyProperty指定的属性，selectKey元素有3个属性需要指定：
+        keyProperty：参数对象中的属性名称，最后插入成功之后，mybatis会通过反射将自增值设置给keyProperty指定的这个属性
+        order：指定selectKey元素中的sql是在插入之前运行还是插入之后运行，可选值（BEFORE|AFTER），这种方式中我们选择AFTER
+        resultType：keyProperty指定的属性对应的类型
+    -->
+
+    <insert id="insertUser3" parameterType="hm.mybatis.com.hm.model.UserModel2">
+        <selectKey keyProperty="id" order="AFTER" resultType="long">
+            <![CDATA[ SELECT LAST_INSERT_ID() ]]>
+        </selectKey>
+        <![CDATA[ INSERT INTO t_user2 (name,age,salary,sex) VALUES (#{name},#{age},#{salary},#{sex})  ]]>
+    </insert>
+
+<!--    id 是在插入数据之前获取， 在插入语句之时，需要指定ID-->
+    <insert id="insertUser4" parameterType="hm.mybatis.com.hm.model.UserModel2">
+        <selectKey keyProperty="id" order="BEFORE" resultType="long">
+            <![CDATA[ select unix_timestamp() ]]>
+        </selectKey>
+        <![CDATA[ INSERT INTO t_user2 (id, name,age,salary,sex) VALUES (#{id},#{name},#{age},#{salary},#{sex})  ]]>
+    </insert>
+
+
+    <update id="updateUser" parameterType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+        UPDATE t_user2 SET name = #{name},age = #{age},salary = #{salary},sex = #{sex} WHERE id = #{id}
+        ]]>
+    </update>
+
+    <delete id="deleteUser" parameterType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+        DELETE FROM t_user2 WHERE id = #{id}
+        ]]>
+
+    </delete>
+
+</com.hm.mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hm</groupId>
+    <artifactId>HiJava</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
+    </parent>
+
+    <modules>
+        <module>A1_JavaSE</module>
+        <module>A3_Servlet</module>
+        <module>B1_Mybatis</module>
+        <module>B2_Spring_IoC</module>
+        <module>B3_Spring_AOP</module>
+        <module>B4_Spring</module>
+        <module>B5_SpringMVC</module>
+        <module>B8_SpringBoot</module>
+        <module>B9_SpringBoot_Mybatis</module>
+        <module>C01_SpringDoc</module>
+        <module>C02_Springfox2</module>
+        <module>C03_Springfox3</module>
+        <module>C05_Knife4j3</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <mysql-connector-java.version>8.0.29</mysql-connector-java.version>
+        <junit.version>4.11</junit.version>
+        <spring.version>5.3.21</spring.version>
+        <lombok.version>1.18.24</lombok.version>
+    </properties>
+
+
+</project>

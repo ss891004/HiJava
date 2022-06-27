@@ -1,0 +1,94 @@
+<?s01_xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
+<com.hm.mapper namespace="hm.mybatis.com.hm.mapper.UserMapper2">
+
+
+    <!-- insert用来定义一个插入操作
+     id：操作的具体标识
+     parameterType：指定插入操作接受的参数类型
+ -->
+    <insert id="insertUser" parameterType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    INSERT INTO t_user2 (id,name,age,salary,sex) VALUES (#{id},#{name},#{age},#{salary},#{sex})
+     ]]>
+    </insert>
+
+    <!-- update用来定义一个更新操作
+     id：操作的具体标识
+     parameterType：指定操作接受的参数类型
+ -->
+    <update id="updateUser" parameterType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    UPDATE t_user2 SET name = #{name},age = #{age},salary = #{salary},sex = #{sex} WHERE id = #{id}
+    ]]>
+    </update>
+
+    <!-- update用来定义一个删除操作
+         id：操作的具体标识
+         parameterType：指定操作接受的参数类型
+     -->
+    <delete id="deleteUser" parameterType="java.lang.Long">
+        <![CDATA[
+    DELETE FROM t_user2 WHERE id = #{id}
+    ]]>
+    </delete>
+
+
+    <!-- select用来定义一个查询操作
+     id：操作的具体标识
+     resultType：指定查询结果保存的类型
+ -->
+    <select id="getUserList" resultType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    SELECT * FROM t_user2
+    ]]>
+    </select>
+
+
+    <select id="getByName" resultType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    SELECT * FROM t_user2 where name =#{xxx}
+    ]]>
+    </select>
+
+    <select id="getByMap" resultType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    SELECT * FROM t_user2 where name =#{name} and id =#{id}
+    ]]>
+    </select>
+    
+    <select id="getListByUserFindDto" parameterType="com.hm.mybatis.dto.UserFindDto" resultType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    SELECT * FROM t_user2  where id=#{userId} OR name = #{userName}
+    ]]>
+    </select>
+
+
+
+    <select id="getByIdOrName1" resultType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    SELECT * FROM t_user2 where id =#{arg0} and name =#{arg1}
+    ]]>
+    </select>
+
+    <select id="getByIdOrName2" resultType="hm.mybatis.com.hm.model.UserModel2">
+        <![CDATA[
+    SELECT * FROM t_user2 where id =#{param1} and name =#{param2}
+    ]]>
+    </select>
+
+    <select id="getByIdOrName3" resultType="hm.mybatis.com.hm.model.UserModel2">
+        SELECT * FROM t_user2 where id =#{userId} and name =#{userName}
+    </select>
+
+    <select id="getByUserId7" resultType="hm.mybatis.com.hm.model.UserModel2" >
+        <![CDATA[ SELECT id,name FROM t_user3 where id = #{xx1} and name = #{xx2}]]>
+    </select>
+
+<!--    Parameter 'w' not found. Available parameters are [arg0, collection, list]-->
+    <select id="getListByIdCollection" resultType="hm.mybatis.com.hm.model.UserModel2">
+        select * from t_user2 where id in (#{list[0]},#{list[1]})
+    </select>
+
+</com.hm.mapper>

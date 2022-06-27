@@ -1,0 +1,64 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		">
+      <!--
+        Spring整合Quartz进行配置遵循下面的步骤：
+        1：定义工作任务的Job
+        2：定义触发器Trigger，并将触发器与工作任务绑定
+        3：定义调度器，并将Trigger注册到Scheduler
+     -->
+    <!-- 1. 定义任务的bean ，JobDetailFactoryBean是把某个类作为Job任务，这个类实现org.quartz.Job接口或者继承org.springframework.scheduling.quartz.QuartzJobBean即可。-->
+    <bean name="lxJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <!-- 指定job的名称 -->
+        <property name="name" value="job1"/>
+        <!-- 指定job的分组 -->
+        <property name="group" value="group1"/>
+        <!-- 指定具体的job类 -->
+        <property name="jobClass" value="hm.quartz.HelloJob"/>
+        <!-- 必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中会删除该任务  -->
+        <property name="durability" value="true"/>
+    </bean>
+
+    <!-- 2. 定义触发器的bean，定义一个Cron的Trigger，一个触发器只能和一个任务进行绑定 -->
+    <bean id="cronTrigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="hw_trigger"/>
+        <property name="group" value="hw_trigger_group"/>
+        <property name="jobDetail" ref="lxJob"/>
+        <!-- 指定Cron 的表达式 ，当前是每隔5s运行一次 -->
+        <property name="cronExpression" value="0/5 * * * * ?" />
+    </bean>
+    <bean id="helloJob2" class="hm.quartz.HelloJob2"></bean>
+    <bean id="hiJobDtl" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="helloJob2"></property>
+        <property name="targetMethod" value="testFun"></property>
+        <!--方法参数-->
+<!--        <property name="arguments">-->
+<!--            <props>-->
+<!--                <prop key="param">param</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+        <!--默认是并发执行的，但是可能会导致一个job的结果影响另一个job的结果，因此我们一般设置false-->
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <bean id="cronTrigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="hiJobDtl"></property>
+        <property name="cronExpression" value="0/3 * * * * ?"></property>
+    </bean>
+
+    <!-- 3.定义调度器，并将Trigger注册到调度器中 -->
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTrigger1"/>
+                <ref bean="cronTrigger2"/>
+            </list>
+        </property>
+        <!-- <property name="autoStartup" value="true" /> -->
+    </bean>
+</beans>

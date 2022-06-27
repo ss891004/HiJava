@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
+<com.hm.mapper namespace="hm.s10_mybatis.UserMapper">
+
+    <insert id="insert" parameterType="hm.s10_mybatis.UserModel" keyProperty="id" useGeneratedKeys="true">
+        <![CDATA[ INSERT INTO `t_user` (name) VALUES (#{name})]]>
+    </insert>
+
+    <select id="getList" resultType="hm.s10_mybatis.UserModel">
+        <![CDATA[
+        SELECT id,name FROM t_user
+        ]]>
+    </select>
+</com.hm.mapper>

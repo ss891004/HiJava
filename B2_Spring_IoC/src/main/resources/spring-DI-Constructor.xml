@@ -1,0 +1,48 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--constructor-arg用户指定构造器的参数
+
+index：构造器参数的位置，从0开始
+
+value：构造器参数的值，value只能用来给简单的类型设置值，value对应的属性类型只能为byte,int,long,float,double,boolean,Byte,Long,Float,Double,枚举，spring容器内部注入的时候会将value的值转换为对应的类型。-->
+<bean id="DIByConstructorParamIndex" class="s01_xml.Student">
+    <constructor-arg index="0" value="19"/>
+    <constructor-arg index="1" value="DIByConstructorParamIndex"/>
+    <constructor-arg index="2" value="man"/>
+</bean>
+
+<!--    constructor-arg用户指定构造器的参数
+
+type：构造函数参数的完整类型，如：java.lang.String,int,double
+
+value：构造器参数的值，value只能用来给简单的类型设置值
+
+-->
+
+    <bean id="DIByConstructorParamType" class="s01_xml.Student">
+        <constructor-arg type="java.lang.Integer" value="21"/>
+        <constructor-arg type="java.lang.String" value="DIByConstructorParamType"/>
+        <constructor-arg type="java.lang.String" value="man"/>
+    </bean>
+
+
+<!--    constructor-arg用户指定构造器的参数
+
+name：构造参数名称
+
+value：构造器参数的值，value只能用来给简单的类型设置值-->
+
+
+    <bean id="DIByConstructorParamName" class ="s01_xml.Student">
+        <constructor-arg name="id" value="30"/>
+        <constructor-arg name="name" value="DIByConstructorParamName"/>
+        <constructor-arg name="sex" value="man"/>
+    </bean>
+
+
+</beans>

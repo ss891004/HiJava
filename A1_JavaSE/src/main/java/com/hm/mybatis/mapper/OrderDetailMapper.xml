@@ -1,0 +1,20 @@
+<?s01_xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
+<com.hm.mapper namespace="hm.mybatis.com.hm.mapper.OrderDetailMapper">
+
+<select id="getListByOrderId1" resultType="hm.mybatis.com.hm.model.OrderDetailModel" parameterType="int">
+    <![CDATA[
+    SELECT
+        a.id,
+        a.order_id AS orderId,
+        a.goods_id AS goodsId,
+        a.num,
+        a.total_price AS totalPrice
+    FROM
+        t_order_detail a
+    WHERE
+        a.order_id = #{value}
+    ]]>
+</select>
+</com.hm.mapper>
