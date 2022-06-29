@@ -1,9 +1,9 @@
 <?s01_xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
-<com.hm.mapper namespace="hm.mybatis.com.hm.mapper.OrderMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.mybatis.mapper.OrderMapper">
 
-    <select id="getById" resultType="hm.mybatis.com.hm.model.OrderModel">
+    <select id="getById" resultType="com.hm.mybatis.model.OrderModel">
         <![CDATA[
   SELECT a.id,a.user_id as userId,a.create_time createTime,a.up_time upTime
   FROM t_order a
@@ -11,11 +11,11 @@
         ]]>
     </select>
 
-    <select id="getById2" resultType="hm.mybatis.com.hm.model.OrderModel">
+    <select id="getById2" resultType="com.hm.mybatis.model.OrderModel">
         <![CDATA[ SELECT a.id,a.user_id,a.create_time,a.up_time FROM t_order a WHERE a.id = #{value} ]]>
     </select>
 
-    <resultMap id="orderModelMap2" type="hm.mybatis.com.hm.model.OrderModel">
+    <resultMap id="orderModelMap2" type="com.hm.mybatis.model.OrderModel">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="create_time" property="createTime"/>
@@ -28,7 +28,7 @@
     ]]>
     </select>
 
-    <resultMap id="orderModelMap4" type="hm.mybatis.com.hm.model.OrderModel">
+    <resultMap id="orderModelMap4" type="com.hm.mybatis.model.OrderModel">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="create_time" property="createTime"/>
@@ -57,7 +57,7 @@
     </select>
 
 
-    <resultMap id="orderModelMap5" type="hm.mybatis.com.hm.model.OrderModel">
+    <resultMap id="orderModelMap5" type="com.hm.mybatis.model.OrderModel">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="create_time" property="createTime"/>
@@ -92,7 +92,7 @@
 
 <!--    先按照订单id查询订单数据，然后在通过订单中user_id去用户表查询用户数据，通过两次查询，组合成目标结果-->
 
-    <resultMap id="orderModelMap6" type="hm.mybatis.com.hm.model.OrderModel">
+    <resultMap id="orderModelMap6" type="com.hm.mybatis.model.OrderModel">
         <id column="id" property="id"/>
         <result column="u_id" property="userId"/>
         <result column="create_time" property="createTime"/>
@@ -120,7 +120,7 @@
 
 
 
-    <resultMap id="orderModelMap7" type="hm.mybatis.com.hm.model.OrderModel">
+    <resultMap id="orderModelMap7" type="com.hm.mybatis.model.OrderModel">
         <id column="id" property="id"/>
         <result column="u_id" property="userId"/>
         <result column="create_time" property="createTime"/>
@@ -146,12 +146,12 @@
     </select>
 
 <!--    一对多的关系，使用 collection-->
-    <resultMap id="orderModelMap8" type="hm.mybatis.com.hm.model.OrderModel">
+    <resultMap id="orderModelMap8" type="com.hm.mybatis.model.OrderModel">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
-        <collection property="xxx" ofType="hm.mybatis.com.hm.model.OrderDetailModel">
+        <collection property="xxx" ofType="com.hm.mybatis.model.OrderDetailModel">
             <id column="orderDetailId" property="id"/>
             <result column="order_id" property="orderId"/>
             <result column="goods_id" property="goodsId"/>
@@ -196,7 +196,7 @@ ofType：集合中元素的类型，此处是OrderDetailModel
 
 <!--    通过2次查询，然后对结果进行分装，先通过订单id查询订单信息，然后通过订单id查询订单明细列表，然后封装结果。-->
 
-    <resultMap id="orderModelMap9" type="hm.mybatis.com.hm.model.OrderModel">
+    <resultMap id="orderModelMap9" type="com.hm.mybatis.model.OrderModel">
         <id column="id" property="id"/>
         <result column="u_id" property="userId"/>
         <result column="create_time" property="createTime"/>
@@ -222,7 +222,7 @@ ofType：集合中元素的类型，此处是OrderDetailModel
 
 
 
-    <resultMap id="orderModelMap10" type="hm.mybatis.com.hm.model.OrderModel" autoMapping="true">
+    <resultMap id="orderModelMap10" type="com.hm.mybatis.model.OrderModel" autoMapping="true">
     </resultMap>
     <select id="getById10" resultMap="orderModelMap10">
         <![CDATA[
@@ -237,11 +237,4 @@ ofType：集合中元素的类型，此处是OrderDetailModel
         a.id = #{value}
     ]]>
     </select>
-
-
-
-
-
-
-
-</com.hm.mapper>
+</mapper>

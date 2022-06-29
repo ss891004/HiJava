@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>B1_Mybatis</artifactId>
+    <artifactId>B10_redis</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

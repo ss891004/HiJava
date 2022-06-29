@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="B2_Spring_IoC" />
-        <module name="B1_Mybatis" />
+        <module name="B10_redis" />
         <module name="B4_Spring" />
         <module name="B5_SpringMVC" />
         <module name="A3_Servlet" />
@@ -23,6 +23,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="B1_Mybatis" target="1.8" />
       <module name="C04_itext5" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -30,6 +31,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="A1_JavaSE" options="-parameters" />
       <module name="A3_Servlet" options="-parameters" />
+      <module name="B10_redis" options="-parameters" />
       <module name="B1_Mybatis" options="-parameters" />
       <module name="B2_Spring_IoC" options="-parameters" />
       <module name="B3_Spring_AOP" options="-parameters" />

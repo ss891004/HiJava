@@ -41,3 +41,23 @@
 
 ## 面向对象
 
+
+## 反射
+
++ 重要的类
+
+| 类| 	含义| 
+|  ----  | ----  |
+| java.lang.Class| 	代表整个字节码。代表一个类型，代表整个类。| 
+| java.lang.reflect.Method| 	代表字节码中的方法字节码。代表类中的方法。| 
+| java.lang.reflect.Constructor| 	代表字节码中的构造方法字节码。代表类中的构造方法。| 
+| java.lang.reflect.Field| 	代表字节码中的属性字节码。代表类中的成员变量（静态变量+实例变量）。| 
+
+
++ 获取Class的三方式
+
+|方式 |	备注 |
+|  ----  | ----  |
+|Class.forName(“完整类名带包名”) |	静态方法 |
+|对象.getClass() |
+|任何类型.class	 |

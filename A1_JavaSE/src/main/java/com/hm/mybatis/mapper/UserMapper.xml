@@ -1,10 +1,10 @@
 <?s01_xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE com.hm.mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-com.hm.mapper.dtd">
-<com.hm.mapper namespace="hm.mybatis.com.hm.mapper.UserMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.mybatis.mapper.UserMapper">
 
     <!-- 插入 -->
-    <insert id="insert" parameterType="hm.mybatis.com.hm.model.UserModel" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.hm.mybatis.model.UserModel" keyProperty="id" useGeneratedKeys="true">
         <![CDATA[ INSERT INTO `t_user` ]]>
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id!=null">
@@ -46,7 +46,7 @@
     </insert>
 
     <!-- 更新 -->
-    <update id="update" parameterType="hm.mybatis.com.hm.model.UserModel">
+    <update id="update" parameterType="com.hm.mybatis.model.UserModel">
         <![CDATA[ UPDATE `t_user` ]]>
         <set>
             <if test="name!=null">
@@ -99,7 +99,7 @@
 
 
     <!-- 查询记录 -->
-    <select id="getModelList" parameterType="map" resultType="hm.mybatis.com.hm.model.UserModel">
+    <select id="getModelList" parameterType="map" resultType="com.hm.mybatis.model.UserModel">
         <![CDATA[
         SELECT
         ]]>
@@ -156,4 +156,4 @@
         </if>
     </select>
 
-</com.hm.mapper>
+</mapper>

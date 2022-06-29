@@ -18,7 +18,6 @@
     <modules>
         <module>A1_JavaSE</module>
         <module>A3_Servlet</module>
-        <module>B1_Mybatis</module>
         <module>B2_Spring_IoC</module>
         <module>B3_Spring_AOP</module>
         <module>B4_Spring</module>
@@ -29,6 +28,7 @@
         <module>C02_Springfox2</module>
         <module>C03_Springfox3</module>
         <module>C05_Knife4j3</module>
+        <module>B10_redis</module>
     </modules>
 
     <properties>

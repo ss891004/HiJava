@@ -1,3 +1,6 @@
+
+
+
 ### 具体步骤
 + 引入jar包
 + 创建 com.hm.config.xml 
@@ -25,3 +28,9 @@
 #### Mapper接口
 + 我们可以通过SqlSession直接调用mapper xml中的db操作，不过更简单的以及推荐的方式是使用Mapper接口，Mapper接口中的方法和mapper xml文件中的各种db操作建立了映射关系，是通过Mapper接口完整名称+方法名称和mapper xml中的namespace+具体操作的id来进行关联的，然后我们直接调用Mapper接口中的方法就可以间接的操作db了，使用想当方便，Mapper接口需要通过SqlSession获取，传入Mapper接口对应的Class对象，然后会返回这个接口的实例，如：
 + UserMapper com.hm.mapper = sqlSession.getMapper(UserMapper.class);
+
+### 配置文件
+![3](./img/3.png )
+
+### mybatis 架构
+![4](./img/4.png )

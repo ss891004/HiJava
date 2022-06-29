@@ -17,11 +17,6 @@ public class UserModel implements Serializable {
 }
 
 /*
-DROP DATABASE IF EXISTS `mydb2`;
-CREATE DATABASE `mydb2`;
-USE `mydb2`;
-
-//创建表结构
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE t_user (
 id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '主键，用户id，自动增长',
