@@ -1,8 +1,7 @@
 package hm.s11_mybatis;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

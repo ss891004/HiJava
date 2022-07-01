@@ -60,12 +60,12 @@ public class Test2 {
     @Test
     public void update() throws Exception {
         //将userId=2的name修改为：路人
-        Long userId1 = 20L;
+        Long userId1 = 12L;
         Integer count = MpUtil.callMapper(UserMapper.class, mapper -> mapper.update(UserModel.builder().id(userId1).name("ready").build()));
         log.info("更新行数：{}", count);
         log.info("---------------------");
         //将userId=3的name修改为：路人,薪水为：1000.88
-        Long userId2 = 21L;
+        Long userId2 = 13L;
         count = MpUtil.callMapper(UserMapper.class, mapper -> mapper.update(UserModel.builder().id(userId2).name("ready").salary(1000.88D).build()));
         log.info("更新行数：{}", count);
     }

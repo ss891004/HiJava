@@ -8,8 +8,8 @@ import java.util.List;
 
 public class s11 {
 
-    // 1、方式1：com.hm.mapper xml文件放在resource目录，和Mapper接口不在一个目录的情况
-    // 2、方式2：com.hm.mapper xml文件和Mapper接口在同一个目录
+    // 1、方式1：mapper xml文件放在resource目录，和Mapper接口不在一个目录的情况
+    // 2、方式2：mapper xml文件和Mapper接口在同一个目录
 
     @Test
     public void insert() {

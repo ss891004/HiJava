@@ -43,7 +43,7 @@ public class Test6 {
     }
 
     private final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-    private final String jdbcUrl = "jdbc:mysql://localhost:3306/mp?characterEncoding=UTF-8";
+    private final String jdbcUrl = "jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8";
     private final String jdbcUserName = "root";
     private final String jdbcPassword = "123456";
     @Test

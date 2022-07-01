@@ -26,8 +26,8 @@ public class MainConfig {
     @Bean
     public DataSource dataSource() {
         DataSource dataSource = new DataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/db1?characterEncoding=UTF-8");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
         dataSource.setInitialSize(5);
@@ -44,6 +44,10 @@ public class MainConfig {
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+
+        //获取所有mapper.xml文件
+        //Resource[] resources = new PathMatchingResourcePatternResolver().getResources("classpath*:/*.xml");
+
         return sqlSessionFactoryBean;
     }
 }

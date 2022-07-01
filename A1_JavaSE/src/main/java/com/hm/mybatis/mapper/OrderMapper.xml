@@ -33,9 +33,9 @@
         <result column="user_id" property="userId"/>
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
-        <result column="name" property="user2Model.name"/>
+        <result column="name" property="userModel.name"/>
 <!--        使用到了级联赋值，多级之间用.进行引用，此处我们只有一级，可以有很多级。-->
-        <result column="u_id" property="user2Model.id"/>
+        <result column="u_id" property="userModel.id"/>
     </resultMap>
 
     <select id="getById4" resultMap="orderModelMap4">
@@ -62,9 +62,9 @@
         <result column="user_id" property="userId"/>
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
-        <result column="name" property="user2Model.name"/>
+        <result column="name" property="userModel.name"/>
 <!--        一对多的关系，使用 association-->
-        <association property="user2Model" >
+        <association property="userModel" >
             <id column="user_id" property="id"/>
             <result column="name" property="name" />
             <result column="age" property="age"/>
@@ -97,8 +97,8 @@
         <result column="u_id" property="userId"/>
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
-        <result column="name" property="user2Model.name"/>
-        <association property="user2Model" select="com.ss.com.hm.mapper.UserMapper2.getByUserId6" column="u_id" >
+        <result column="name" property="userModel.name"/>
+        <association property="userModel" select="com.ss.com.hm.mapper.UserMapper2.getByUserId6" column="u_id" >
         </association>
     </resultMap>
 
@@ -125,8 +125,8 @@
         <result column="u_id" property="userId"/>
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
-        <result column="name" property="user2Model.name"/>
-        <association property="user2Model" select="hm.mybatis.com.hm.mapper.UserMapper2.getByUserId7" column="{xx1=u_id,xx2=up_time}" >
+        <result column="name" property="userModel.name"/>
+        <association property="userModel" select="com.hm.mybatis.UserMapper2.getByUserId7" column="{xx1=u_id,xx2=up_time}" >
         </association>
     </resultMap>
 
@@ -201,8 +201,8 @@ ofType：集合中元素的类型，此处是OrderDetailModel
         <result column="u_id" property="userId"/>
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
-        <result column="name" property="user2Model.name"/>
-        <collection property="xxx" select="hm.mybatis.com.hm.mapper.OrderDetailMapper.getListByOrderId1" column="id"/>
+        <result column="name" property="userModel.name"/>
+        <collection property="xxx" select="com.hm.mybatis.mapper.OrderDetailMapper.getListByOrderId1" column="id"/>
     </resultMap>
 
     <select id="getById9" resultMap="orderModelMap9">

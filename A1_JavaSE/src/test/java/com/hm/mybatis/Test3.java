@@ -53,7 +53,7 @@ public class Test3 {
             //创建UserModel对象
             UserModel2 userModel = UserModel2.builder().name("asdfghjkl").age(30).salary(50000D).sex(1).build();
             //执行插入操作
-            int result = sqlSession.insert("hm.mybatis.com.hm.mapper.UserMapper2.insertUser", userModel);
+            int result = sqlSession.insert("com.hm.mybatis.mapper.UserMapper2.insertUser", userModel);
             log.info("插入影响行数：{}", result);
             //提交事务
             sqlSession.commit();
@@ -66,7 +66,7 @@ public class Test3 {
             //创建UserModel对象
             UserModel2 userModel = UserModel2.builder().id(1L).name("路人甲Java").age(30).salary(50000D).sex(1).build();
             //执行插入操作
-            int result = sqlSession.insert("hm.mybatis.com.hm.mapper.UserMapper2.insertUser", userModel);
+            int result = sqlSession.insert("com.hm.mybatis.mapper.UserMapper2.insertUser", userModel);
             log.info("影响行数：{}", result);
         }
     }
@@ -78,7 +78,7 @@ public class Test3 {
             //创建UserModel对象
             UserModel2 userModel = UserModel2.builder().id(1L).name("路人甲Java，你1111好").age(18).salary(5000D).sex(0).build();
             //执行更新操作
-            int result = sqlSession.update("hm.mybatis.com.hm.mapper.UserMapper2.updateUser", userModel);
+            int result = sqlSession.update("com.hm.mybatis.mapper.UserMapper2.updateUser", userModel);
             log.info("影响行数：{}", result);
         }
     }
@@ -90,7 +90,7 @@ public class Test3 {
             //定义需要删除的用户id
             Long userId = 1L;
             //执行删除操作
-            int result = sqlSession.delete("hm.mybatis.com.hm.mapper.UserMapper2.deleteUser", userId);
+            int result = sqlSession.delete("com.hm.mybatis.mapper.UserMapper2.deleteUser", userId);
             log.info("影响行数：{}", result);
         }
     }
@@ -98,7 +98,7 @@ public class Test3 {
     @Test
     public void selectUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            List<UserModel2> usr = sqlSession.selectList("hm.mybatis.com.hm.mapper.UserMapper2.getUserList");
+            List<UserModel2> usr = sqlSession.selectList("com.hm.mybatis.mapper.UserMapper2.getUserList");
             log.info("结果：{}", usr);
         }
     }

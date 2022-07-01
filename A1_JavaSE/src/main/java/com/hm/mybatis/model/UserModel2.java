@@ -6,8 +6,7 @@ import lombok.*;
 * builder模式构建对象的代码、重写toString方法，这些都在代码编译为字节码之前会写进去，
 * */
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

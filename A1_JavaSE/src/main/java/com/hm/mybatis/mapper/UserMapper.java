@@ -7,35 +7,16 @@ import java.util.Map;
 
 public interface UserMapper {
 
-    /**
-     * 插入用户信息
-     *
-     * @param userModel
-     * @return
-     */
+    //插入用户信息
     void insert(UserModel userModel);
 
-    /**
-     * 批量插入用户信息
-     *
-     * @param userModelList
-     */
+    //批量插入用户信息
     void insertBatch(List<UserModel> userModelList);
 
-    /**
-     * 更新用户信息
-     *
-     * @param userModel
-     * @return
-     */
+    //更新用户信息
     int update(UserModel userModel);
 
-    /**
-     * 通过map来更新用户记录
-     *
-     * @param map
-     * @return
-     */
+    // 通过map来更新用户记录
     int updateByMap(Map<String, Object> map);
 
     /**
@@ -46,12 +27,7 @@ public interface UserMapper {
      */
     int delete(Map<String, Object> map);
 
-    /**
-     * 查询用户列表
-     *
-     * @param map
-     * @return
-     */
+    //查询用户列表
     List<UserModel> getModelList(Map<String, Object> map);
 
 

@@ -34,3 +34,37 @@
 
 ### mybatis 架构
 ![4](./img/4.png )
+
+#{}和${}
+#{}表示一个占位符号，通过#{}可以实现preparedStatement向占位符中设置值，自动进行java类型和jdbc类型转换，#{}可以有效防止sql注入。 #{}可以接收简单类型值或pojo属性值。 如果parameterType传输单个简单类型值，#{}括号中可以是value或其它名称。
+
+${}表示拼接sql串，通过${}可以将parameterType 传入的内容拼接在sql中且不进行jdbc类型转换， ${}可以接收简单类型值或pojo属性值，如果parameterType传输单个简单类型值，${}括号中只能是value。
+
+
+
++ Mapper接口开发需要遵循以下规范：
+  + 1、接口的全路径和mapper文件中的namespace保持一致
+  + 2、接口的方法名和映射文件的statementId保持一致
+  + 3、接口中方法的参数类型和映射文件的parameterType保持一致，返回结果类型和映射文件的resultType保持一致
+  + 4、接口名称和映射文件的名称最好保持一致
+  + 5、接口和映射文件最好放到一起
+
+
+
+### mappers（映射器）
+Mapper配置的几种方法：
+<mapper resource=" " />
+使用相对于类路径的资源
+如：<mapper resource="sqlmap/User.xml" />
+
+<mapper class=" " />
+使用mapper接口类路径
+如：<mapper class="cn.itcast.mybatis.mapper.UserMapper"/>
+注意：此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
+
+<package name=""/>
+注册指定包下的所有mapper接口
+如：<package name="cn.itcast.mybatis.mapper"/>
+注意：此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
+
+

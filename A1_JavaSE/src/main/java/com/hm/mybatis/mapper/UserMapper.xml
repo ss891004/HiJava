@@ -1,6 +1,5 @@
 <?s01_xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hm.mybatis.mapper.UserMapper">
 
     <!-- 插入 -->
@@ -97,6 +96,13 @@
         </where>
     </delete>
 
+<!--    foreach语句中， collection属性的参数类型可以使：List、数组、map集合
+          collection： 必须跟mapper.java中@Param标签指定的元素名一样
+          item： 表示在迭代过程中每一个元素的别名，可以随便起名，但是必须跟元素中的#{}里面的名称一样。
+　　       index：表示在迭代过程中每次迭代到的位置(下标)
+　　       open：前缀， sql语句中集合都必须用小括号()括起来
+          close：后缀
+　　       separator：分隔符，表示迭代时每个元素之间以什么分隔-->
 
     <!-- 查询记录 -->
     <select id="getModelList" parameterType="map" resultType="com.hm.mybatis.model.UserModel">
