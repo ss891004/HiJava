@@ -1,6 +1,10 @@
 package com.hm.serialize;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -10,6 +14,10 @@ import java.io.Serializable;
  * @version 1.0 V
  * @createTime 2014-6-9 下午02:33:25
  */
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person implements Serializable {
 
     /**
@@ -20,27 +28,5 @@ public class Person implements Serializable {
     private String name;
     private String sex;
 
-    public int getAge() {
-        return age;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 }
