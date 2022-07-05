@@ -23,7 +23,7 @@ import java.sql.*;
  insert into users(id,name,password,email,birthday) values(2,'lisi','123456','lisi@sina.com','1981-12-04');
  insert into users(id,name,password,email,birthday) values(3,'wangwu','123456','wangwu@sina.com','1979-12-04');
  */
-public class HiJDBC {
+public class J01 {
 
     public static void main(String[] args) {
         Connection connection = null;
@@ -35,7 +35,7 @@ public class HiJDBC {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             //通过驱动管理类获取数据库链接
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hijdbc", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/flask16", "root", "123456");
 
             //定义sql语句 ?表示占位符
             String sql = "select id,name,password,email,birthday from users where id =?";

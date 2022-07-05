@@ -1,8 +1,11 @@
 package com.hm.generic;
 
-public class TestGenericClass {
+
+//泛型类
+public class G02 {
     public static void main(String[] args) {
         test();
+        test01();
     }
 
     ///////////////////////////////////////////////////////////
@@ -18,6 +21,8 @@ public class TestGenericClass {
         System.out.println(genericInteger.getVar());
         System.out.println(genericString.getVar());
     }
+
+
 
     ///////////////////////////////////////////////////////////
     public static void test01() {

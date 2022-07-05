@@ -3,7 +3,7 @@ package com.hm.generic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestSafe {
+public class G01 {
     public static void main(String[] args) {
         test();
     }
