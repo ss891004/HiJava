@@ -6,12 +6,16 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 单例bean，scope设置为singleton -->
-    <bean id="singletonBean" class="s01_scope.BeanScopeModel" scope="singleton">
+    <bean id="singletonBean" class="s01_xml.BeanScope01" scope="singleton">
         <constructor-arg index="0" value="singleton"/>
     </bean>
 
-    <bean id="prototypeBean" class="s01_scope.BeanScopeModel" scope="prototype">
+    <bean id="prototypeBean" class="s01_xml.BeanScope01" scope="prototype">
         <constructor-arg index="0" value="prototype"/>
     </bean>
 
+    <!-- 自定义scope的bean -->
+    <bean id="threadBean" class="s01_xml.BeanScope02" scope="thread">
+        <constructor-arg index="0" value="thread"/>
+    </bean>
 </beans>

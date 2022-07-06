@@ -16,7 +16,7 @@ public class S02_DI_Constructor {
     public void before() {
         System.out.println("spring容器准备启动.....");
         //1.bean配置文件位置
-        String beanXml = "classpath:spring-DI-Constructor.xml";
+        String beanXml = "classpath:s02-DI-Constructor.xml";
         //2.创建ClassPathXmlApplicationContext容器，给容器指定需要加载的bean配置文件
         this.context = new ClassPathXmlApplicationContext(beanXml);
         System.out.println("spring容器启动完毕！");

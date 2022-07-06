@@ -6,8 +6,7 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-
-    <bean id="service1" class="s03_autowire.DiAutowireByName$S22_annotation.t1.Service1">
+    <bean id="service1" class="s03_autowire.DiAutowireByName$Service1">
         <property name="desc1" value="service1"/>
     </bean>
 
@@ -19,18 +18,20 @@
         <property name="desc2" value="service12"/>
     </bean>
 
-    <!--    byteName：按照名称进行注入-->
+    <!--    byName：按照名称进行注入-->
     <!--    byType：按类型进行注入-->
     <!--    constructor：按照构造方法进行注入-->
     <!--    default：默认注入方式-->
+    <bean id ="diByName1" class="s03_autowire.DiAutowireByName" autowire="byName">
+    </bean>
 
     <!-- 当配置了自动注入，还可以使用手动的方式自动注入进行覆盖，手动的优先级更高一些 -->
-    <bean id ="diByName" class="s03_autowire.DiAutowireByName" autowire="byName">
+    <bean id ="diByName2" class="s03_autowire.DiAutowireByName" autowire="byName">
         <property name="service2" ref="service12"/>
     </bean>
 <!--====================================================-->
 
-    <bean id="nservice1" class="s03_autowire.DiAutowireByType$S22_annotation.t1.Service1">
+    <bean id="nservice1" class="s03_autowire.DiAutowireByType$Service1">
         <property name="desc1" value="service1"/>
     </bean>
 
@@ -49,7 +50,7 @@
     <!--====================================================-->
 
 
-    <bean id="cservice1" class="s03_autowire.DiAutowireByConstructor$S22_annotation.t1.Service1">
+    <bean id="cservice1" class="s03_autowire.DiAutowireByConstructor$Service1">
         <property name="desc" value="service1"/>
     </bean>
 

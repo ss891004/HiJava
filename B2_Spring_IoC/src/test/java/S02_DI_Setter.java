@@ -6,6 +6,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
+//setter注入
 public class S02_DI_Setter {
 
     ClassPathXmlApplicationContext context;
@@ -14,7 +15,7 @@ public class S02_DI_Setter {
     public void before() {
         System.out.println("spring容器准备启动.....");
         //1.bean配置文件位置
-        String beanXml = "classpath:spring-DI-Setter.xml";
+        String beanXml = "classpath:s02-DI-Setter.xml";
         //2.创建ClassPathXmlApplicationContext容器，给容器指定需要加载的bean配置文件
         this.context = new ClassPathXmlApplicationContext(beanXml);
         System.out.println("spring容器启动完毕！");

@@ -23,6 +23,7 @@
     <!-- 调用默认构造函数-->
     <bean id="student2" class="s01_xml.Student">
     </bean>
+
     <!--============================================================-->
     <!-- 通过工厂静态有参方法创建bean对象 -->
     <bean id="student4" name="" class="s01_xml.StudentStaticFactory" factory-method="buildStudent1"/>
@@ -32,6 +33,8 @@
         <constructor-arg index="0" value="hahah"/>
         <constructor-arg index="1" value="10"/>
     </bean>
+
+
     <!--============================================================-->
 
     <bean id="sf" class="s01_xml.StudentFactory"/>
@@ -43,6 +46,8 @@
     </bean>
 
     <bean id="student6" factory-bean="sf" factory-method="buildUser1"/>
+
+
     <!--============================================================-->
 
     <bean id="createByFactoryBean" class="s01_xml.StudentFactoryBean"/>
