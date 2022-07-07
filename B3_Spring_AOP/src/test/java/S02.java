@@ -27,6 +27,7 @@ public class S02 {
     // 3.通过代理类和InvocationHandler创建代理对象
     // 4.上面已经创建好代理对象了，接着我们就可以使用代理对象了
 
+    //jdk自带的代理使用上面有个限制，只能为接口创建代理类，如果需要给具体的类创建代理类，需要用后面要说的cglib
     @Test
     public void jdk_proxy1() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // 1. 获取接口对应的代理类

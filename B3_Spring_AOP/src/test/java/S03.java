@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 
 public class S03 {
 
+    // cglib代理
     @Test
     public void test1() {
         //使用Enhancer来给某个类创建代理类，步骤
@@ -25,12 +26,11 @@ public class S03 {
         enhancer.setCallback(new MethodInterceptor() {
             /**
              * 代理对象方法拦截器
-             * @param o 代理对象
-             * @param method 被代理的类的方法，即Service1中的方法
-             * @param objects 调用方法传递的参数
+             *
+             * @param o           代理对象
+             * @param method      被代理的类的方法，即Service1中的方法
+             * @param objects     调用方法传递的参数
              * @param methodProxy 方法代理对象
-             * @return
-             * @throws Throwable
              */
             @Override
             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {

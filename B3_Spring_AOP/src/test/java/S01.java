@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class S01 {
     @Test
-    public void m1() {
+    public void test1() {
         IService serviceA = new ServiceA();
         IService serviceB = new ServiceB();
         serviceA.m1();

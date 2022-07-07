@@ -18,14 +18,13 @@
         <property name="name" value="Python"/>
     </bean>
 
+<!--    ======================================================-->
+
     <bean id="baseService" abstract="true">
         <property name="name" value="Python_Java"/>
         <property name="serviceA" ref="e1"/>
     </bean>
-<!--
-bean元素的abstract属性为true的时候可以定义某个bean为一个抽象的bean，相当于定义了一个bean模板，spring容器并不会创建这个bean，从容器中查找abstract为true的bean的时候，会报错BeanIsAbstractException异常
-bean元素的parent属性可以指定当前bean的父bean，子bean可以继承父bean中配置信息，也可以自定义配置信息，这样可以覆盖父bean中的配置
--->
+
     <bean id="e4" class="s07_extend.ServiceB" parent="baseService"/>
     <bean id="e5" class="s07_extend.ServiceC" parent="baseService"/>
 

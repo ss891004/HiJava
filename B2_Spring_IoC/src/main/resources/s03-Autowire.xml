@@ -7,15 +7,15 @@
 
 
     <bean id="service1" class="s03_autowire.DiAutowireByName$Service1">
-        <property name="desc1" value="service1"/>
+        <property name="desc1" value="XXX1"/>
     </bean>
 
     <bean id="service2" class="s03_autowire.DiAutowireByName$Service2">
-        <property name="desc2" value="service2"/>
+        <property name="desc2" value="XXX2"/>
     </bean>
 
     <bean id="service12" class="s03_autowire.DiAutowireByName$Service2">
-        <property name="desc2" value="service12"/>
+        <property name="desc2" value="XXX12"/>
     </bean>
 
     <!--    byName：按照名称进行注入-->

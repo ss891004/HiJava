@@ -23,6 +23,8 @@ public class S03_Autowire {
         //自动注入是采用约定大约配置的方式来实现的，程序和spring容器之间约定好，遵守某一种都认同的规则，来实现自动注入。
 
         // 3种自动注入方式详解及案例
+
+
         // 按名称自动注入
         System.out.println(context.getBean("diByName1"));
         System.out.println(context.getBean("diByName2"));
