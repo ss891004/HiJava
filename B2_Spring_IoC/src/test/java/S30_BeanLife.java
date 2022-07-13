@@ -2,9 +2,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.*;
-import s30_BeanLife.Car;
-import s30_BeanLife.CompositeObj;
-import s30_BeanLife.User;
+import s30_beanLife.Car;
+import s30_beanLife.CompositeObj;
+import s30_beanLife.User;
 
 import java.util.Arrays;
 

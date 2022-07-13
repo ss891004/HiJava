@@ -12,6 +12,7 @@
         <module name="B4_Spring" />
         <module name="B5_SpringMVC" />
         <module name="A3_Servlet" />
+        <module name="B11_MQ" />
         <module name="C03_Springfox3" />
         <module name="B9_SpringBoot_Mybatis" />
         <module name="B3_Spring_AOP" />
@@ -32,6 +33,7 @@
       <module name="A1_JavaSE" options="-parameters" />
       <module name="A3_Servlet" options="-parameters" />
       <module name="B10_redis" options="-parameters" />
+      <module name="B11_MQ" options="-parameters" />
       <module name="B1_Mybatis" options="-parameters" />
       <module name="B2_Spring_IoC" options="-parameters" />
       <module name="B3_Spring_AOP" options="-parameters" />

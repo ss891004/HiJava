@@ -1,13 +1,10 @@
 import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.*;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
-import s30_BeanLife.*;
-
-import java.util.Arrays;
+import s30_beanLife.*;
 
 public class S30_BeanLife2 {
 
