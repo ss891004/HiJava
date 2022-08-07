@@ -30,6 +30,7 @@
         <module>C05_Knife4j3</module>
         <module>B10_redis</module>
         <module>B11_MQ</module>
+        <module>C06_WxPay</module>
     </modules>
 
     <properties>

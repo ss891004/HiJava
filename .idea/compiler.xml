@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="C06_WxPay" />
         <module name="B2_Spring_IoC" />
         <module name="B10_redis" />
         <module name="B4_Spring" />
@@ -45,6 +46,7 @@
       <module name="C02_Springfox2" options="-parameters" />
       <module name="C03_Springfox3" options="-parameters" />
       <module name="C05_Knife4j3" options="-parameters" />
+      <module name="C06_WxPay" options="-parameters" />
     </option>
   </component>
 </project>

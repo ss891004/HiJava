@@ -39,19 +39,56 @@
 + 程序执行过程
   ![1](./img/1.png )
 
+
+## I/O
++ 数据流是指所有的数据通信通道
++ 
++ 字符流， 单位是 byte
++ 字节流
+
+### File类
++ File 可以表示文件也可以表示目录，File 类控制所有硬盘操作
+
+
+![8](./img/8.png )
+
+
+| 分类     | 字节输入流                 | 字节输出流                  | 字符输入流            | 字符输出流            |
+|--------|-----------------------|------------------------|------------------|------------------|
+| 抽象基类   | InputStream           | OutputStream           | Reader           | Writer           |
+| 访问文件   | 	FileInputStream      | 	FileOutputStream      | 	FileReader      | 	FileWriter      |
+| 访问数组   | 	ByteArrayInputStream | 	ByteArrayOutputStream | 	CharArrayReader | 	CharArrayWriter |
+| 访问管道   | 	PipedInputStream     | 	PipedOutputStream     | 	PipedReader     | 	PipedWriter     |
+| 访问字符串  | 	                     |                        | 	 	StringReader  | 	StringWriter    |
+| 缓冲流    | 	BufferedInputStream  | 	BufferedOutputStream  | 	BufferedReader  | 	BufferedWriter  |
+| 转换流	   | 	 	InputStreamReader	 | OutputStreamWriter     |                  |                  |
+| 对象流	   | ObjectInputStream     | 	ObjectOutputStream	   |||	 
+| 抽象基类	  | FilterInputStream     | 	FilterOutputStream	   | FilterReader     | 	FilterWriter    |
+| 打印流	   |                       | 	PrintStream	          |                  | 	PrintWriter     |
+| 推回输入流	 | PushbackInputStream	  |                        | 	PushbackReader	 |                  |
+| 特殊流	   | DataInputStream       | 	DataOutputStream      |||
+
+
+### NIO
+
+![9](./img/9.png )
+
+
 ## 面向对象
 
 
 ## 反射
++ 通过java语言中的反射机制可以操作字节码文件（可以读和修改字节码文件。）
++ 通过反射机制可以操作代码片段。（class文件。）
 
 + 重要的类
 
-| 类| 	含义| 
-|  ----  | ----  |
-| java.lang.Class| 	代表整个字节码。代表一个类型，代表整个类。| 
-| java.lang.reflect.Method| 	代表字节码中的方法字节码。代表类中的方法。| 
-| java.lang.reflect.Constructor| 	代表字节码中的构造方法字节码。代表类中的构造方法。| 
-| java.lang.reflect.Field| 	代表字节码中的属性字节码。代表类中的成员变量（静态变量+实例变量）。| 
+| 类                             | 	含义                                 | 
+|-------------------------------|-------------------------------------|
+| java.lang.Class               | 	代表整个字节码。代表一个类型，代表整个类。              | 
+| java.lang.reflect.Method      | 	代表字节码中的方法字节码。代表类中的方法。              | 
+| java.lang.reflect.Constructor | 	代表字节码中的构造方法字节码。代表类中的构造方法。          | 
+| java.lang.reflect.Field       | 	代表字节码中的属性字节码。代表类中的成员变量（静态变量+实例变量）。 | 
 
 
 + 获取Class的三方式
@@ -61,3 +98,10 @@
 |Class.forName(“完整类名带包名”) |	静态方法 |
 |对象.getClass() |
 |任何类型.class	 |
+
+
+### Class类
+
+### Field类
+
+### Method类
