@@ -12,11 +12,11 @@
         <module name="B10_redis" />
         <module name="C07_Mybatis_Plus" />
         <module name="B4_Spring" />
+        <module name="C08_Mybatis_sb" />
         <module name="B5_SpringMVC" />
         <module name="A3_Servlet" />
         <module name="B11_MQ" />
         <module name="C03_Springfox3" />
-        <module name="B9_SpringBoot_Mybatis" />
         <module name="B3_Spring_AOP" />
         <module name="C01_SpringDoc" />
         <module name="C02_Springfox2" />
@@ -44,13 +44,13 @@
       <module name="B4_Spring" options="-parameters" />
       <module name="B5_SpringMVC" options="-parameters" />
       <module name="B8_SpringBoot" options="-parameters" />
-      <module name="B9_SpringBoot_Mybatis" options="-parameters" />
       <module name="C01_SpringDoc" options="-parameters" />
       <module name="C02_Springfox2" options="-parameters" />
       <module name="C03_Springfox3" options="-parameters" />
       <module name="C05_Knife4j3" options="-parameters" />
       <module name="C06_WxPay" options="-parameters" />
       <module name="C07_Mybatis_Plus" options="-parameters" />
+      <module name="C08_Mybatis_sb" options="-parameters" />
     </option>
   </component>
 </project>
