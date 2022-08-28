@@ -10,6 +10,7 @@
         <module name="C06_WxPay" />
         <module name="B2_Spring_IoC" />
         <module name="B10_redis" />
+        <module name="C07_Mybatis_Plus" />
         <module name="B4_Spring" />
         <module name="B5_SpringMVC" />
         <module name="A3_Servlet" />
@@ -25,6 +26,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="B05_Mybatis_Plus" target="1.8" />
       <module name="B1_Mybatis" target="1.8" />
       <module name="C04_itext5" target="1.8" />
     </bytecodeTargetLevel>
@@ -33,6 +35,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="A1_JavaSE" options="-parameters" />
       <module name="A3_Servlet" options="-parameters" />
+      <module name="B05_Mybatis_Plus" options="-parameters" />
       <module name="B10_redis" options="-parameters" />
       <module name="B11_MQ" options="-parameters" />
       <module name="B1_Mybatis" options="-parameters" />
@@ -47,6 +50,7 @@
       <module name="C03_Springfox3" options="-parameters" />
       <module name="C05_Knife4j3" options="-parameters" />
       <module name="C06_WxPay" options="-parameters" />
+      <module name="C07_Mybatis_Plus" options="-parameters" />
     </option>
   </component>
 </project>
