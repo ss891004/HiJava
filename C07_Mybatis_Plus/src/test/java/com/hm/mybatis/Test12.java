@@ -1,7 +1,6 @@
 package com.hm.mybatis;
 
 import com.hm.mybatis.mapper.UserMapper10;
-import com.hm.mybatis.model.UserModel;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

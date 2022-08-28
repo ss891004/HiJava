@@ -1,6 +1,8 @@
 package com.hm.mybatis.model;
-import org.apache.ibatis.type.Alias;
+
 import lombok.*;
+import org.apache.ibatis.type.Alias;
+
 import java.util.List;
 
 @Getter
