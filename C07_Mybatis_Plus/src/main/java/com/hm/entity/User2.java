@@ -2,6 +2,7 @@ package com.hm.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-    @TableId()
+@TableName("t_user2")
+public class User2 {
+    @TableId
     private Long id;
+    @TableField("username")
     private String name;
     private Integer age;
     private String email;

@@ -26,8 +26,10 @@ https://www.springframework.org/schema/context/spring-context.xsd">
         <property name="dataSource" ref="dataSource" />
 
         <!-- 设置类型别名所对应的包 -->
-        <property name="typeAliasesPackage" value="com.hm.entity">
-        </property>
+        <property name="typeAliasesPackage" value="com.hm.entity"/>
+
+        <!-- 设置实体名和数据库表名不一样的情况 -->
+<!--        <property name="globalConfig" ref="globalConfig"/>-->
     </bean>
     <!--
     配置mapper接口的扫描配置
@@ -36,5 +38,16 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.hm.mapper"></property>
+    </bean>
+
+    <bean id="globalConfig"
+          class="com.baomidou.mybatisplus.core.config.GlobalConfig">
+        <property name="dbConfig">
+            <bean
+                    class="com.baomidou.mybatisplus.core.config.GlobalConfig$DbConfig">
+                <!-- 设置实体类所对应的表的前缀 -->
+                <property name="tablePrefix" value="t_"></property>
+            </bean>
+        </property>
     </bean>
 </beans>

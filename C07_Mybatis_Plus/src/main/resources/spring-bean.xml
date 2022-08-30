@@ -7,7 +7,6 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 https://www.springframework.org/schema/context/spring-context.xsd">
 
-
     <!-- 加载配置文件 -->
     <context:property-placeholder location="classpath:db.properties" />
 
@@ -19,15 +18,19 @@ https://www.springframework.org/schema/context/spring-context.xsd">
         <property name="password" value="${jdbc.password}"></property>
     </bean>
 
-
     <!-- 配置用于创建SqlSessionFactory的工厂bean -->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 配置数据源 -->
         <property name="dataSource" ref="dataSource" />
-
         <!-- 设置类型别名所对应的包 -->
-        <property name="typeAliasesPackage" value="com.hm.entity">
-        </property>
+        <property name="typeAliasesPackage" value="com.hm.entity"/>
+        <!--
+设置映射文件的路径
+若映射文件所在路径和mapper接口所在路径一致，则不需要设置
+-->
+        <!--
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        -->
     </bean>
     <!--
     配置mapper接口的扫描配置
