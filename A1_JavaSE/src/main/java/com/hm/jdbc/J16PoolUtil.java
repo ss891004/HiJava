@@ -5,13 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class HiPoolUtil {
+public class J16PoolUtil {
 
     /**
      * @Field: pool
      *  数据库连接池
      */
-    private static final HiPool pool = new HiPool();
+    private static final J15Pool pool = new J15Pool();
 
     /**
      * @Method: getConnection

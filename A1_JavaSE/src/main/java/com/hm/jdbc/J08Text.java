@@ -14,7 +14,7 @@ create table mysql_clob
 );
 * */
 
-public class HiMysqlClob {
+public class J08Text {
     public static void main(String[] args) {
         Connection connection = null;
         PreparedStatement pst = null;
@@ -22,7 +22,7 @@ public class HiMysqlClob {
         Statement statement = null;
         Reader reader = null;
         try {
-            connection = JdbcUtils.getConnection();
+            connection = J02.getConnection();
             String sql = "insert into mysql_clob(resume) values(?)";
             pst = connection.prepareStatement(sql);
             //这种方式获取的路径，其中的空格会被使用“%20”代替
@@ -43,7 +43,7 @@ public class HiMysqlClob {
 
             //////////////////////////////////////////////////
 
-            connection = JdbcUtils.getConnection();
+            connection = J02.getConnection();
             String sql2 = "select resume from mysql_clob where id=2";
             pst = connection.prepareStatement(sql2);
             resultSet = pst.executeQuery();

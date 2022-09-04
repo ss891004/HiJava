@@ -3,7 +3,7 @@ package com.hm.jdbc;
 import java.sql.*;
 
 // jdbc 工具类的使用
-public class HiCRUD2 {
+public class J04CRUD {
 
     public static void main(String[] args) {
         Connection connection = null;
@@ -12,7 +12,7 @@ public class HiCRUD2 {
         Statement  statement = null;
 
         try {
-            connection=JdbcUtils.getConnection();
+            connection= J02.getConnection();
             statement=connection.createStatement();
 
             //插入数据

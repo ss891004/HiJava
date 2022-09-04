@@ -18,7 +18,7 @@ public class PrimaryKey {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-            conn = JdbcUtils.getConnection();
+            conn = J02.getConnection();
             String sql = "insert into test1(name) values(?)";
             st = conn.prepareStatement(sql);
             st.setString(1, "aaa1");
@@ -31,7 +31,7 @@ public class PrimaryKey {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JdbcUtils.release(conn, st, rs);
+            J02.release(conn, st, rs);
         }
     }
 }

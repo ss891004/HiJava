@@ -1,9 +1,9 @@
 package com.hm.jdbc;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /*
   create table testbatch
@@ -14,33 +14,28 @@ import java.sql.SQLException;
 
 * */
 
-//PreparedStatement 批处理的使用
-public class HiBatch2 {
+//Statement 批处理的使用
+public class J09Batch {
 
     public static void main(String[] args) {
-        long starttime = System.currentTimeMillis();
-
         Connection connection = null;
-        PreparedStatement st = null;
+        Statement st = null;
         ResultSet resultSet = null;
 
-
         try {
-            connection = JdbcUtils.getConnection();
-            String sql = "insert into testbatch(id,name) values(?,?)";
-            st = connection.prepareStatement(sql);
-            //多条sql执行的话，只能最多执行1000条。
-            for (int i = 1; i <= 1008; i++) {
-                st.setInt(1, i);
-                st.setString(2, "aa" + i);
-                st.addBatch();
-                if (i % 1000 == 0) {
-                    st.executeBatch();
-                    st.clearBatch();
-                }
-            }
-            st.executeBatch();
-
+            connection = J02.getConnection();
+            //要执行的SQL命令，SQL中的参数使用?作为占位符
+            //String sql = "insert into users(id,name,password,email,birthday) values(?,?,?,?,?)";
+            String sql1 = "insert into testbatch(id,name) values(1,'a')";
+            String sql2 = "insert into testbatch(id,name) values(2,'b')";
+            String sql3 = "insert into testbatch(id,name) values(3,'c')";
+            st = connection.createStatement();
+            st.addBatch(sql1);
+            st.addBatch(sql2);
+            st.addBatch(sql3);
+            int[] rst = st.executeBatch();
+            System.out.println(rst);
+            st.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,9 +63,5 @@ public class HiBatch2 {
                 }
             }
         }
-
-        long endtime = System.currentTimeMillis();
-        System.out.println("程序花费时间：" + (endtime - starttime) / 1000 + "秒！！");
-
     }
 }

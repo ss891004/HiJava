@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
-public class JdbcUtils {
+public class J02 {
 
     private static String driver = null;
     private static String url = null;

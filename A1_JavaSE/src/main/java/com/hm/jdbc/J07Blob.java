@@ -9,6 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ *  TinyBlob 255B
+ *  Blob     65kB
+ *  MediumBlob  16MB
+ *  LongBlob 4GB
+ */
+
+
 // 处理MySQL二进制数据(例如图像、声音、二进制文)
 /*
  create table mysql_blob
@@ -18,17 +26,17 @@ import java.sql.SQLException;
  );
 * */
 
-public class HiMysqlBlob {
+public class J07Blob {
     public static void main(String[] args) {
         Connection conn = null;
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-            conn = JdbcUtils.getConnection();
+            conn = J02.getConnection();
             String sql = "insert into mysql_blob(image) values(?)";
             st = conn.prepareStatement(sql);
             //这种方式获取的路径，其中的空格会被使用“%20”代替
-            String path = HiMysqlBlob.class.getClassLoader().getResource("01.jpg").getPath();
+            String path = J07Blob.class.getClassLoader().getResource("01.jpg").getPath();
             //将“%20”替换会空格
             path = path.replaceAll("%20", " ");
             File file = new File(path);
@@ -43,7 +51,7 @@ public class HiMysqlBlob {
 
             //////////////////////////////////////////////////
 
-            conn = JdbcUtils.getConnection();
+            conn = J02.getConnection();
             String sql2 = "select image from mysql_blob where id=?";
             st = conn.prepareStatement(sql2);
             st.setInt(1, 1);

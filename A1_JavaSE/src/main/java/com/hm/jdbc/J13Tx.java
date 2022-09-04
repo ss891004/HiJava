@@ -14,7 +14,7 @@ insert into account(name,money) values('A',1000);
 insert into account(name,money) values('B',1000);
 insert into account(name,money) values('C',1000);
  */
-public class HiTx2 {
+public class J13Tx {
 
     //设置事务回滚点
     public void testTransaction1() {
@@ -24,7 +24,7 @@ public class HiTx2 {
         Savepoint sp = null;
 
         try {
-            conn = JdbcUtils.getConnection();
+            conn = J02.getConnection();
             conn.setAutoCommit(false);
 
             String sql1 = "update account set money=money-100 where name='A'";
@@ -66,7 +66,7 @@ public class HiTx2 {
             }
             e.printStackTrace();
         } finally {
-            JdbcUtils.release(conn, st, rs);
+            J02.release(conn, st, rs);
         }
     }
 }

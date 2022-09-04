@@ -3,7 +3,7 @@ package com.hm.jdbc;
 import java.sql.*;
 
 // curd 的使用
-public class HiCRUD {
+public class J03CRUD {
 
     public static void main(String[] args) {
         Connection connection = null;

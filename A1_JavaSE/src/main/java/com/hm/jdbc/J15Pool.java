@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-public class HiPool implements DataSource {
+public class J15Pool implements DataSource {
 
     /**
      * @Field: listConnections
@@ -25,7 +25,7 @@ public class HiPool implements DataSource {
 
     static {
         //在静态代码块中加载db.properties数据库配置文件
-        InputStream in = HiPool.class.getClassLoader().getResourceAsStream("db.properties");
+        InputStream in = J15Pool.class.getClassLoader().getResourceAsStream("db.properties");
         Properties prop = new Properties();
         try {
             prop.load(in);
@@ -58,7 +58,7 @@ public class HiPool implements DataSource {
             System.out.println("listConnections数据库连接池大小是" + listConnections.size());
             //返回Connection对象的代理对象
             return (Connection) Proxy.newProxyInstance(
-                    HiPool.class.getClassLoader(),
+                    J15Pool.class.getClassLoader(),
                     conn.getClass().getInterfaces(),
                     new InvocationHandler() {
                         @Override

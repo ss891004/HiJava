@@ -3,7 +3,7 @@ package com.hm.jdbc;
 import java.sql.*;
 
 //PreparedStatement 的使用
-public class HiCRUD3 {
+public class J05CURD {
 
     public static void main(String[] args) {
         Connection connection = null;
@@ -12,7 +12,7 @@ public class HiCRUD3 {
 
         try {
             //获取一个数据库连接
-            connection = JdbcUtils.getConnection();
+            connection = J02.getConnection();
             //要执行的SQL命令，SQL中的参数使用?作为占位符
             //String sql = "insert into users(id,name,password,email,birthday) values(?,?,?,?,?)";
             String sql = "insert into users(name,password,email,birthday) values(?,?,?,?)";

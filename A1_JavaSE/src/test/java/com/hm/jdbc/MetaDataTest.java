@@ -1,6 +1,5 @@
 package com.hm.jdbc;
 
-import com.hm.jdbc.JdbcUtils;
 import org.junit.Test;
 
 import java.sql.*;
@@ -16,7 +15,7 @@ public class MetaDataTest {
      */
     @Test
     public void testDataBaseMetaData() throws SQLException {
-        Connection conn = JdbcUtils.getConnection();
+        Connection conn = J02.getConnection();
         DatabaseMetaData metadata = conn.getMetaData();
         //getURL()：返回一个String类对象，代表数据库的URL
         System.out.println(metadata.getURL());
@@ -32,7 +31,7 @@ public class MetaDataTest {
         System.out.println(metadata.getDriverVersion());
         //isReadOnly()：返回一个boolean值，指示数据库是否只允许读操作
         System.out.println(metadata.isReadOnly());
-        JdbcUtils.release(conn, null, null);
+        J02.release(conn, null, null);
     }
 
     /**
@@ -43,7 +42,7 @@ public class MetaDataTest {
      */
     @Test
     public void testParameterMetaData() throws SQLException {
-        Connection conn = JdbcUtils.getConnection();
+        Connection conn = J02.getConnection();
         String sql = "select * from users wherer name=? and password=?";
         //将SQL预编译一下
         PreparedStatement st = conn.prepareStatement(sql);
@@ -52,7 +51,7 @@ public class MetaDataTest {
         System.out.println(pm.getParameterCount());
         //getParameterType(int param)：获得指定参数的sql类型，MySQL数据库驱动不支持
         System.out.println(pm.getParameterType(1));
-        JdbcUtils.release(conn, null, null);
+        J02.release(conn, null, null);
     }
 
     /**
@@ -64,7 +63,7 @@ public class MetaDataTest {
      */
     @Test
     public void testResultSetMetaData() throws Exception {
-        Connection conn = JdbcUtils.getConnection();
+        Connection conn = J02.getConnection();
         String sql = "select * from account";
         PreparedStatement st  = conn.prepareStatement(sql);
         ResultSet rs = st.executeQuery();
@@ -76,7 +75,7 @@ public class MetaDataTest {
         System.out.println(metadata.getColumnName(1));
         //getColumnTypeName(int column)获得指定列的类型
         System.out.println(metadata.getColumnTypeName(1));
-        JdbcUtils.release(conn, st, rs);
+        J02.release(conn, st, rs);
     }
 
 }

@@ -17,7 +17,7 @@ import java.sql.SQLException;
  * insert into account(name,money) values('C',1000);
  */
 //事务范例
-public class HiTx {
+public class J12Tx {
 
     /**
      * @Method: testTransaction1
@@ -29,7 +29,7 @@ public class HiTx {
         ResultSet rs = null;
 
         try {
-            conn = JdbcUtils.getConnection();
+            conn = J02.getConnection();
             conn.setAutoCommit(false);
             //通知数据库开启事务(start transaction)
             String sql1 = "update account set money=money-100 where name='A'";
@@ -43,7 +43,7 @@ public class HiTx {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JdbcUtils.release(conn, st, rs);
+            J02.release(conn, st, rs);
         }
     }
 
@@ -57,7 +57,7 @@ public class HiTx {
         ResultSet rs = null;
 
         try {
-            conn = JdbcUtils.getConnection();
+            conn = J02.getConnection();
             conn.setAutoCommit(false);
             //通知数据库开启事务(start transaction)
             String sql1 = "update account set money=money-100 where name='A'";
@@ -73,7 +73,7 @@ public class HiTx {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JdbcUtils.release(conn, st, rs);
+            J02.release(conn, st, rs);
         }
     }
 
@@ -87,7 +87,7 @@ public class HiTx {
         ResultSet rs = null;
 
         try {
-            conn = JdbcUtils.getConnection();
+            conn = J02.getConnection();
             conn.setAutoCommit(false);
             //通知数据库开启事务(start transaction)
             String sql1 = "update account set money=money-100 where name='A'";
@@ -109,7 +109,7 @@ public class HiTx {
             }
             e.printStackTrace();
         } finally {
-            JdbcUtils.release(conn, st, rs);
+            J02.release(conn, st, rs);
         }
     }
 }
