@@ -4,7 +4,7 @@ import S21_componentScan.beans.ScanBean3;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class S21_ComponentScan {
+public class S21_2_ComponentScan {
 
 
     @Test

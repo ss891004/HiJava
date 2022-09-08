@@ -8,6 +8,7 @@ import s01_xml.ThreadScope;
 import java.util.concurrent.TimeUnit;
 
 
+//bean作用域scope
 public class S01_Bean_Scope {
 
     //singleton

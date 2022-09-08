@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+//依赖注入之自动注入
 public class S03_Autowire {
     ClassPathXmlApplicationContext context;
 

@@ -1,4 +1,4 @@
-public class S27 {
+public class S26 {
 
     // 国际化简单理解，就是对于不同的语言，做出不同的响应。
 

@@ -9,11 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="C06_WxPay" />
         <module name="B2_Spring_IoC" />
-        <module name="B10_redis" />
         <module name="C07_Mybatis_Plus" />
         <module name="B4_Spring" />
         <module name="C08_Mybatis_sb" />
-        <module name="B5_SpringMVC" />
         <module name="A3_Servlet" />
         <module name="B11_MQ" />
         <module name="C03_Springfox3" />
@@ -27,7 +25,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="B05_Mybatis_Plus" target="1.8" />
+      <module name="B10_redis" target="1.8" />
       <module name="B1_Mybatis" target="1.8" />
+      <module name="B5_SpringMVC" target="1.8" />
       <module name="C04_itext5" target="1.8" />
     </bytecodeTargetLevel>
   </component>

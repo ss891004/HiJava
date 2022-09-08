@@ -11,7 +11,7 @@ import s24_annotation.p1.S24Bean10;
 import s24_annotation.q1.S24Bean9;
 import s24_annotation.r1.S24Bean8;
 
-public class S24_Annotation {
+public class S21_5_Autowired_Resource_Primary_Qulifier {
 
     //@Autowired、@Resource、@Primary、@Qulifier
 

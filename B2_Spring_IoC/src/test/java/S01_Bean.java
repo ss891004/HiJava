@@ -3,6 +3,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
+//xml中bean定义详解
 public class S01_Bean {
 
     @Test

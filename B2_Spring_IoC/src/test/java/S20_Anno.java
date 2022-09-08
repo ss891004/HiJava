@@ -4,6 +4,7 @@ import s20_anno.UseAnno11;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 
+//深入理解注解
 public class S20_Anno {
 
 

@@ -1,10 +1,9 @@
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import s24_annotation.p1.S24Bean10;
 import s25_annotation.S25Bean1;
 import s25_annotation.S25Bean2;
 
-public class S25_Annotation {
+public class S21_6_Scope_DependsOn_ImportResource_Lazy {
 
     //@Scope、@DependsOn、@ImportResource、@Lazy
 

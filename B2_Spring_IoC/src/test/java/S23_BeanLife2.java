@@ -6,7 +6,7 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
 import s30_beanLife.*;
 
-public class S30_BeanLife2 {
+public class S23_BeanLife2 {
 
 //阶段1：Bean元信息配置阶段
     //API的方式

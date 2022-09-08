@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import s01_xml.Student;
 
+//依赖注入之手动注入
 public class S02_DI_Constructor {
 
     ClassPathXmlApplicationContext context;

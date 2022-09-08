@@ -8,7 +8,7 @@ import s30_beanLife.User;
 
 import java.util.Arrays;
 
-public class S30_BeanLife {
+public class S23_BeanLife {
 
 //阶段1：Bean元信息配置阶段
     //API的方式

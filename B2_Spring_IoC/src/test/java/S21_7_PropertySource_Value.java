@@ -1,11 +1,9 @@
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import s25_annotation.S25Bean1;
-import s25_annotation.S25Bean2;
 import s26_annotation.DbConfig;
 import s26_annotation.MainConfig;
 
-public class S26_Annotation {
+public class S21_7_PropertySource_Value {
 
     @Test
     public void test1() {

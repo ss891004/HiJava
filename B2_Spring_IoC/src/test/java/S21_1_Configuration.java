@@ -6,7 +6,7 @@ import s20_configuration.ConfigBean2;
 
 import java.util.Arrays;
 
-public class S20_Configuration {
+public class S21_1_Configuration {
 
 
     @Test
