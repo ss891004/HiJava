@@ -1,4 +1,4 @@
-package hm.s11_mybatis;
+package hm.s53_mybatis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

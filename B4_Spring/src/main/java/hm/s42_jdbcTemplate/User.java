@@ -1,4 +1,4 @@
-package hm.s04_jdbcTemplate;
+package hm.s42_jdbcTemplate;
 import lombok.*;
 
 @Getter

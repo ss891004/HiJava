@@ -1,4 +1,4 @@
-package hm.s11_mybatis;
+package hm.s53_mybatis;
 import lombok.*;
 
 @Data

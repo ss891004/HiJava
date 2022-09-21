@@ -1,11 +1,3 @@
-import hm.s11_mybatis.IUserService;
-import hm.s11_mybatis.MainConfig;
-import hm.s11_mybatis.UserModel;
-import org.junit.Test;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import java.util.List;
-
 public class s12 {
 
 

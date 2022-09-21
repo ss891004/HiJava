@@ -65,7 +65,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
     <!-- 配置扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描包以及它的子包下的所有映射接口类 -->
-        <property name="basePackage" value="hm.s11_mybatis" />
+        <property name="basePackage" value="hm.s53_mybatis" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

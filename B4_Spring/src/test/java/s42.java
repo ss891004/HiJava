@@ -1,5 +1,5 @@
-import hm.s04_jdbcTemplate.DataSourceUtils;
-import hm.s04_jdbcTemplate.User;
+import hm.s42_jdbcTemplate.DataSourceUtils;
+import hm.s42_jdbcTemplate.User;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.junit.Test;
 import org.springframework.jdbc.core.*;
@@ -12,14 +12,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class s04 {
 
+//JdbcTemplate实现增删改查
+public class s42 {
 
-    //创建数据源DataSource
-    //创建JdbcTemplate，new JdbcTemplate(dataSource)
-    //调用JdbcTemplate的方法操作db，如增删改查
+    /**
+     * JdbcTemplate使用步骤
+     * 1. 创建数据源DataSource
+     * 2. 创建JdbcTemplate，new JdbcTemplate(dataSource)
+     * 3. 调用JdbcTemplate的方法操作db，如增删改查
+     */
+
     @Test
-    public void test0() {
+    public void testSelect() {
         //1.创建数据源DataSource
         DataSource dataSource = DataSourceUtils.getDataSource();
         //2.创建JdbcTemplate，new JdbcTemplate(dataSource)
@@ -30,12 +35,9 @@ public class s04 {
     }
 
     // JdbcTemplate中以update开头的方法，用来执行增、删、改操作
-
     @Test
-    public void test1() {
-        //1.创建数据源DataSource
+    public void testInsert() {
         DataSource dataSource = DataSourceUtils.getDataSource();
-        //2.创建JdbcTemplate，new JdbcTemplate(dataSource)
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         //3.调用JdbcTemplate的方法操作db，如增删改查
         int rows = jdbcTemplate.update("insert into t_user values(null,'xxx')");
@@ -180,10 +182,10 @@ public class s04 {
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 User user = new User();
                 user.setId(rs.getInt(1));
-                user.setName(rs.getString(1));
+                user.setName(rs.getString(2));
                 return user;
             }
-        }, 130);
+        }, 1);
         System.out.println(maps);
     }
 
@@ -192,7 +194,7 @@ public class s04 {
         DataSource dataSource = DataSourceUtils.getDataSource();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         String sql = "select id,name from t_user where id>?";
-        List<User> maps = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), 130);
+        List<User> maps = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), 1);
         System.out.println(maps);
     }
 }

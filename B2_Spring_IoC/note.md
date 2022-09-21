@@ -41,7 +41,6 @@ BeanFactory接口
 ApplicationContext接口
 ClassPathXmlApplicationContext类
 AnnotationConfigApplicationContext类
-
 ```
 
 

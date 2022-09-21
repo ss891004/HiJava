@@ -42,7 +42,6 @@
     <bean id="student5" factory-bean="sf" factory-method="buildUser2">
         <constructor-arg index="0" value="xhxhxh"/>
         <constructor-arg index="1" value="20"/>
-
     </bean>
 
     <bean id="student6" factory-bean="sf" factory-method="buildUser1"/>
@@ -51,6 +50,5 @@
     <!--============================================================-->
 
     <bean id="createByFactoryBean" class="s01_xml.StudentFactoryBean"/>
-
 
 </beans>
