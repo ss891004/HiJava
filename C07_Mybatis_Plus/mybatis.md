@@ -29,10 +29,10 @@
 + UserMapper com.hm.mapper = sqlSession.getMapper(UserMapper.class);
 
 ### 配置文件
-![3](../../../../../../img/3.png )
+![3](./img/3.png )
 
 ### mybatis 架构
-![4](../../../../../../img/4.png )
+![4](./img/4.png )
 
 #{}和${}
 #{}表示一个占位符号，通过#{}可以实现preparedStatement向占位符中设置值，自动进行java类型和jdbc类型转换，#{}可以有效防止sql注入。 #{}可以接收简单类型值或pojo属性值。 如果parameterType传输单个简单类型值，#{}括号中可以是value或其它名称。
