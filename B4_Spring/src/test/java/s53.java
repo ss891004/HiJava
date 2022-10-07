@@ -1,3 +1,8 @@
+import hm.s53_multi_db.config.Db1Config;
+import hm.s53_multi_db.config.Db2Config;
+import hm.s53_multi_db.model.User1Model;
+import hm.s53_multi_db.model.User2Model;
+import hm.s53_multi_db.service.UserService;
 import hm.s53_mybatis.IUserService;
 import hm.s53_mybatis.MainConfig;
 import hm.s53_mybatis.UserModel;
@@ -33,6 +38,10 @@ public class s53 {
 
 
     //每个数据源对应一个SqlSessionFactory，@MapperScan注解中可以通过sqlSessionTemplateRef来指定SqlSessionFactory的bean名称。
+
+    /////////////////////////////////////////////////////////
+    //多个数据源
+
 
 
 }

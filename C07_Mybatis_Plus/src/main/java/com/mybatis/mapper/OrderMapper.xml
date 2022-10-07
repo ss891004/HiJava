@@ -98,7 +98,7 @@
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
         <result column="name" property="userModel.name"/>
-        <association property="userModel" select="com.ss.com.hm.mapper.UserMapper2.getByUserId6" column="u_id" >
+        <association property="userModel" select="com.ss.com.mp.mapper.UserMapper2.getByUserId6" column="u_id" >
         </association>
     </resultMap>
 
@@ -126,7 +126,7 @@
         <result column="create_time" property="createTime"/>
         <result column="up_time" property="upTime"/>
         <result column="name" property="userModel.name"/>
-        <association property="userModel" select="com.hm.mybatis.UserMapper2.getByUserId7" column="{xx1=u_id,xx2=up_time}" >
+        <association property="userModel" select="com.mp.mybatis.UserMapper2.getByUserId7" column="{xx1=u_id,xx2=up_time}" >
         </association>
     </resultMap>
 

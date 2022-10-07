@@ -27,7 +27,6 @@
         <module>B11_MQ</module>
         <module>C06_WxPay</module>
         <module>C07_Mybatis_Plus</module>
-        <module>C08_Mybatis_sb</module>
     </modules>
 
     <properties>

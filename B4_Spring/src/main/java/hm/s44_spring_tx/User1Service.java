@@ -21,4 +21,9 @@ public class User1Service {
     public void requires_new(String name) {
         this.jdbcTemplate.update("insert into user1(name) VALUES (?)", name);
     }
+
+    @Transactional(propagation = Propagation.NESTED)
+    public void nested(String name) {
+        this.jdbcTemplate.update("insert into user1(name) VALUES (?)", name);
+    }
 }

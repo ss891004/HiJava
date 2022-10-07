@@ -26,7 +26,7 @@ https://www.springframework.org/schema/context/spring-context.xsd">
         <property name="dataSource" ref="dataSource" />
 
         <!-- 设置类型别名所对应的包 -->
-        <property name="typeAliasesPackage" value="com.hm.entity"/>
+        <property name="typeAliasesPackage" value="com.mp.entity"/>
 
         <!-- 设置实体名和数据库表名不一样的情况 -->
 <!--        <property name="globalConfig" ref="globalConfig"/>-->
@@ -37,7 +37,7 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     并将这些动态代理作为IOC容器的bean管理
     -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.hm.mapper"></property>
+        <property name="basePackage" value="com.mp.mapper"></property>
     </bean>
 
     <bean id="globalConfig"

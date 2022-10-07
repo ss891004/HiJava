@@ -1,0 +1,12 @@
+package hm.s53_multi_db.mapper.db2;
+
+import hm.s53_multi_db.model.User2Model;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface UserMapper2 {
+    void insert(User2Model user2Model);
+    List<User2Model> getList();
+}

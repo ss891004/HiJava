@@ -16,6 +16,6 @@
     </environments>
 
     <mappers>
-        <package name="com.hm.mybatis.mapper"/>
+        <package name="com.mp.mybatis.mapper"/>
     </mappers>
 </configuration>
