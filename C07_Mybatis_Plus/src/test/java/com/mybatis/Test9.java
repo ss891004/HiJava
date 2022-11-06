@@ -24,4 +24,17 @@ public class Test9 {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
+    // 延迟加载
+
+
+    //鉴别器
+
+
+    //继承
+
+
+
+
+
+
 }

@@ -221,7 +221,6 @@ ofType：集合中元素的类型，此处是OrderDetailModel
 
 
 
-
     <resultMap id="orderModelMap10" type="com.mybatis.model.OrderModel" autoMapping="true">
     </resultMap>
     <select id="getById10" resultMap="orderModelMap10">

@@ -4,7 +4,7 @@
 
     <!-- 插入 -->
     <insert id="insert" parameterType="com.mybatis.model.UserModel" keyProperty="id" useGeneratedKeys="true">
-        <![CDATA[ INSERT INTO `t_user` ]]>
+        <![CDATA[ INSERT INTO `t_user1` ]]>
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id!=null">
                 <![CDATA[ `id`, ]]>
@@ -38,7 +38,7 @@
 
     <!-- 批量插入 -->
     <insert id="insertBatch" parameterType="map">
-        <![CDATA[ INSERT INTO `t_user` (`id`, `name`, `age`, `salary`) VALUES ]]>
+        <![CDATA[ INSERT INTO `t_user1` (`id`, `name`, `age`, `salary`) VALUES ]]>
         <foreach collection="list" separator="," item="item">
             (#{item.id}, #{item.name}, #{item.age}, #{item.salary})
         </foreach>
@@ -46,7 +46,7 @@
 
     <!-- 更新 -->
     <update id="update" parameterType="com.mybatis.model.UserModel">
-        <![CDATA[ UPDATE `t_user` ]]>
+        <![CDATA[ UPDATE `t_user1` ]]>
         <set>
             <if test="name!=null">
                 <![CDATA[ `name` = #{name}, ]]>
@@ -67,7 +67,7 @@
 
     <!-- 更新 -->
     <update id="updateByMap" parameterType="map">
-        <![CDATA[ UPDATE `t_user` ]]>
+        <![CDATA[ UPDATE `t_user1` ]]>
         <set>
             <if test="name!=null">
                 <![CDATA[ `name` = #{name}, ]]>
@@ -88,7 +88,7 @@
 
     <!-- 删除 -->
     <delete id="delete" parameterType="map">
-        <![CDATA[ DELETE FROM `t_user`  ]]>
+        <![CDATA[ DELETE FROM `t_user1`  ]]>
         <where>
             <if test="id!=null">
                 <![CDATA[ AND `id` = #{id} ]]>
@@ -126,7 +126,7 @@
         </choose>
         <![CDATA[
         FROM
-        `t_user` a
+        `t_user1` a
         ]]>
         <where>
             <if test="id!=null and id.toString()!=''">

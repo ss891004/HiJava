@@ -1,7 +1,7 @@
 package com.mybatis;
 
 import com.mybatis.dto.UserFindDto;
-import com.mybatis.mapper.UserMapper2;
+import com.mybatis.mapper.UserMapper4;
 import com.mybatis.model.UserModel2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
@@ -53,7 +53,7 @@ public class Test5 {
     @Test
     public void getByName() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper4 mapper = sqlSession.getMapper(UserMapper4.class);
             //执行查询操作
             UserModel2 um2 = mapper.getByName("asdfghjkl");
             System.out.println(um2);
@@ -63,7 +63,7 @@ public class Test5 {
     @Test
     public void getByMap() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper4 mapper = sqlSession.getMapper(UserMapper4.class);
 
             Map<String, Object> map = new HashMap<>();
             map.put("id", 2L);
@@ -78,7 +78,7 @@ public class Test5 {
     @Test
     public void getListByUserFindDto() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper4 mapper = sqlSession.getMapper(UserMapper4.class);
 
             UserFindDto userFindDto = UserFindDto.builder().userId(1612797927957L).userName("asdfghjkl").build();
 
@@ -91,7 +91,7 @@ public class Test5 {
     @Test
     public void getByIdOrName() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper4 mapper = sqlSession.getMapper(UserMapper4.class);
 
             //arg0,agr1
             UserModel2 um1= mapper.getByIdOrName1(1612797927957L,"asdfghjkl");
@@ -110,7 +110,7 @@ public class Test5 {
     @Test
     public void getListByIdCollection() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper4 mapper = sqlSession.getMapper(UserMapper4.class);
 
             List<Long> ids = new ArrayList<Long>();
             ids.add(1L);

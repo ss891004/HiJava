@@ -24,7 +24,7 @@ public class Test8 {
     @Before
     public void before() throws IOException {
         //指定mybatis全局配置文件
-        String resource = "mybatis-config.xml";
+        String resource = "mybatis-config-8.xml";
         //读取全局配置文件
         InputStream inputStream = Resources.getResourceAsStream(resource);
         //构建SqlSessionFactory对象
@@ -36,7 +36,11 @@ public class Test8 {
     public void getById() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
             OrderMapper mapper = sqlSession.getMapper(OrderMapper.class);
-            OrderModel om = mapper.getById10(1);
+            OrderModel om = mapper.getById(1);
+
+            // 全局设置  <setting name="autoMappingBehavior" value="NONE"/>
+            // 数据库中查询有数据，但是无法映射到实体对象上
+
             System.out.println(om);
         }
     }

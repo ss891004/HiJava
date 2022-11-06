@@ -1,4 +1,4 @@
-package hm.s06_aop;
+package hm.s06_ProxyFactoryBean;
 
 public class Service1 {
     public void m1() {

@@ -1,3 +1,62 @@
+## 使用Maven 手动创建SpringBoot项目
+1. pom.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hm</groupId>
+	<artifactId>pro</artifactId>
+	<version>0.0.1</version>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.3</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
+```
+
+2. 创建启动类和控制器 (路径 src/main/java/com)
+```java
+package com;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@EnableAutoConfiguration
+public class MyApplication {
+	@RequestMapping("/")
+	String home() {
+		return "Hello World!";
+	}
+	public static void main(String[] args) {
+		SpringApplication.run(MyApplication.class, args);
+	}
+}
+```
+3. mvn dependency:tree
+4. mvn spring-boot:run
+5. mvn package
+
+
+
+
 ## 创建项目
 + 创建一个maven基础项目
   + mvn archetype:generate -DgroupId=springboot -DartifactId=springboot-helloworld -Darchetype ArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -38,6 +97,8 @@
   7.打包在应⽤内的 application.properties（或 yml）⽂件
   8.在应⽤ @Configuration 配置类中，⽤ @PropertySource 注解声明的属性⽂件
   9.SpringApplication.setDefaultProperties 声明的默认属性
+
+
 
 ## spring boot 底层于原理
 + spring-boot-starter-parent

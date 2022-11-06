@@ -46,7 +46,7 @@ public class Test10 {
         }
     }
 
-    //choose/when/otherwise元素
+    //choose/when/otherwise 元素
     @Test
     public void Test2() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
@@ -60,7 +60,7 @@ public class Test10 {
         }
     }
 
-    //where元素
+    //where 元素
     @Test
     public void Test3() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {

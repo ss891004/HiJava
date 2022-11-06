@@ -15,10 +15,12 @@ public interface UserMapper10 {
     List<UserModel> getList3(Map user);
 
     int update1(Map userModel);
+    int update2(Map userModel);
+
 
     List<UserModel> getList4(Map user);
 
-    int update2(Map userModel);
+
 
     List<UserModel> getList5(Map user);
 

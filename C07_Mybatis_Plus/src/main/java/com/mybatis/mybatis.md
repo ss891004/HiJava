@@ -5,9 +5,9 @@
 
 ### 具体步骤
 + 引入jar包
-+ 创建 com.hm.config.xml 
-+ 创建 com.hm.mapper xml 
-+ 创建 com.hm.mapper 接口文件
++ 创建 mybatis-config.xml 
++ 创建 mapper xml 
++ 创建 mapper 接口文件
 + 通过mybatis获取Mapper接口执行对db的操作
 
 ### Mybatis核心对象介绍
@@ -42,15 +42,12 @@
 
 ${}表示拼接sql串，通过${}可以将parameterType 传入的内容拼接在sql中且不进行jdbc类型转换， ${}可以接收简单类型值或pojo属性值，如果parameterType传输单个简单类型值，${}括号中只能是value。
 
-
-
 + Mapper接口开发需要遵循以下规范：
   + 1、接口的全路径和mapper文件中的namespace保持一致
   + 2、接口的方法名和映射文件的statementId保持一致
   + 3、接口中方法的参数类型和映射文件的parameterType保持一致，返回结果类型和映射文件的resultType保持一致
   + 4、接口名称和映射文件的名称最好保持一致
   + 5、接口和映射文件最好放到一起
-
 
 
 ### mappers（映射器）
@@ -68,5 +65,46 @@ Mapper配置的几种方法：
 注册指定包下的所有mapper接口
 如：<package name="cn.itcast.mybatis.mapper"/>
 注意：此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
+
+
+### 获取参数
+  + 单个字面量类型
+  + 多个字面量类型
+  + map集合类型
+  + 实体类类型
+  + @Param标识
+### 查询结果
+  + 查询一个实体对象  resultType="User"
+  + 查询一个list集合   resultType="User"
+  + 查询单个数据
+  + 查询一条数据为map集合 resultType="map"
+  + 查询多条数据为map集合  resultType="map"
+
+### 自定义映射resultMap
++ 一对一
++ 多对一 association
++ 一对多 collection
+
+### 动态SQL
+  + if
+  + where
+  + set
+  + trim
+  + choose、when、otherwise
+  + foreach
+  + SQL片段
+
+
+### 缓存
+
+
+### 逆向工程
++ 正向工程：先创建Java实体类，由框架负责根据实体类生成数据库表。 Hibernate是支持正向工 程的。
++ 逆向工程：先创建数据库表，由框架负责根据数据库表，反向生成如下资源：
+  + Java实体类 
+  + Mapper接口 
+  + Mapper映射文件
+
+### 分页
 
 

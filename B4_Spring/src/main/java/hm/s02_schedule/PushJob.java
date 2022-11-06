@@ -1,4 +1,4 @@
-package hm.s11_schedule;
+package hm.s02_schedule;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.annotation.Schedules;

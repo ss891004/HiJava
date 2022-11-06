@@ -2,11 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.UserMapper10">
 
-    <cache/>
-
-<select id="getList1" resultType="com.mybatis.model.UserModel" flushCache="true">
-    select * from t_user
-    where 1=1
+<select id="getList1" resultType="com.mybatis.model.UserModel">
+    select * from t_user1 where 1=1
     <if test="id!=null">
         and id=#{id}
     </if>
@@ -18,14 +15,12 @@
     </if>
 </select>
 
-
-
 <!--
 choose内部的条件满足一个，choose内部的sql拼接就会结束。
 otherwise属于可选的，当所有条件都不满足的时候，otherwise将起效。
 -->
-    <select id="getList2" resultType="com.mybatis.model.UserModel">
-        select * from t_user where 1=1
+    <select id="getList2" resultType="com.mybatis.model.UserModel" >
+        select * from t_user1 where 1=1
         <choose>
             <when test="id!=null">
                 and id=#{id}
@@ -40,8 +35,8 @@ otherwise属于可选的，当所有条件都不满足的时候，otherwise将�
     </select>
 
 
-    <select id="getList3" resultType="com.mybatis.model.UserModel">
-        select * from t_user
+    <select id="getList3" resultType="com.mybatis.model.UserModel" >
+        select * from t_user1
         <where>
             <choose>
                 <when test="id!=null">
@@ -57,8 +52,16 @@ otherwise属于可选的，当所有条件都不满足的时候，otherwise将�
         </where>
     </select>
 
+    <insert id="insertBatch" parameterType="list">
+        INSERT INTO t_user1 (id,name,age) VALUES
+        <foreach collection="collection" separator="," item="item">
+            (#{item.id}, #{item.name}, #{item.age})
+        </foreach>
+    </insert>
+
+
     <update id="update1" >
-        update t_user
+        update t_user1
         <set>
             <if test="name!=null">
                 name=#{name},
@@ -72,25 +75,8 @@ otherwise属于可选的，当所有条件都不满足的时候，otherwise将�
         </where>
     </update>
 
-
-
-    <select id="getList4" resultType="com.mybatis.model.UserModel" parameterType="map">
-        SELECT id,name,age FROM t_user
-        <trim prefix="where" prefixOverrides="and|or">
-            <if test="id!=null">
-                AND id = #{id}
-            </if>
-            <if test="name!=null and name.toString()!=''">
-                AND name = #{name}
-            </if>
-            <if test="age!=null">
-                AND age = #{age}
-            </if>
-        </trim>
-    </select>
-
     <update id="update2" parameterType="com.mybatis.model.UserModel">
-        UPDATE t_user
+        UPDATE t_user1
         <trim prefix="SET" prefixOverrides="," suffixOverrides=",">
             <if test="name!=null">
                 name = #{name},
@@ -106,10 +92,31 @@ otherwise属于可选的，当所有条件都不满足的时候，otherwise将�
         </where>
     </update>
 
+    <select id="getList4" resultType="com.mybatis.model.UserModel" parameterType="map">
+        SELECT id,name,age FROM t_user1
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="name!=null and name.toString()!=''">
+                AND name = #{name}
+            </if>
+            <if test="age!=null">
+                AND age = #{age}
+            </if>
+        </trim>
+    </select>
 
+
+<!--
+    collection：可以是一个List、Set、Map或者数组
+    item：集合中的当前元素的引用
+    index：用来访问当前元素在集合中的位置
+    separator：各个元素之间的分隔符
+    open和close用来配置最后用什么前缀和后缀将foreach内部所有拼接的sql给包装起来。-->
 
     <select id="getList5" resultType="com.mybatis.model.UserModel" parameterType="map">
-        SELECT id,name,age FROM t_user
+        SELECT id,name,age FROM t_user1
         <trim prefix="where" prefixOverrides="and|or">
             <if test="id!=null">
                 AND id = #{id}
@@ -128,12 +135,6 @@ otherwise属于可选的，当所有条件都不满足的时候，otherwise将�
         </trim>
     </select>
 
-    <insert id="insertBatch" parameterType="list">
-        INSERT INTO t_user (id,name,age) VALUES
-        <foreach collection="collection" separator="," item="item">
-            (#{item.id}, #{item.name}, #{item.age})
-        </foreach>
-    </insert>
 
     <sql id="findSql">
         <where>
@@ -160,10 +161,8 @@ otherwise属于可选的，当所有条件都不满足的时候，otherwise将�
     </sql>
 
     <select id="getList1Count" resultType="int" parameterType="map">
-        SELECT count(*) FROM t_user
+        SELECT count(*) FROM t_user1
         <include refid="findSql" />
     </select>
-
-
 
 </mapper>

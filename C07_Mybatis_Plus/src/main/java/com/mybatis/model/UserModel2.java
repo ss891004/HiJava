@@ -29,7 +29,7 @@ CREATE TABLE t_user2 (
   `sex` TINYINT NOT NULL DEFAULT 0 COMMENT '性别,0:未知,1:男,2:女'
 ) COMMENT '用户表';
 
-INSERT INTO t_user (`name`,`age`,`salary`,`sex`) VALUES ('路人甲Java',30,50000,1), ('javacode2018',30,50000,1), ('张学友',56,500000,1), ('林志玲',45,88888.88,2);
+INSERT INTO t_user2 (`name`,`age`,`salary`,`sex`) VALUES ('路人甲Java',30,50000,1), ('javacode2018',30,50000,1), ('张学友',56,500000,1), ('林志玲',45,88888.88,2);
 
 
 

@@ -24,6 +24,12 @@ public class Test3 {
     *   3.关闭SqlSession对象：sqlSession.close();
     * */
 
+    //Mapper接口使用时注意的几点
+    //
+    //    Mapper接口的完整类名必须和对应的Mapper xml中的namespace的值一致
+    //    Mapper接口中方法的名称需要和Mapper xml中具体操作的id值一致
+    //    Mapper接口中方法的参数、返回值可以不和Mapper xml中的一致
+
     private SqlSessionFactory sqlSessionFactory;
 
     @Before
@@ -51,9 +57,9 @@ public class Test3 {
     public void insertUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(false)) {
             //创建UserModel对象
-            UserModel2 userModel = UserModel2.builder().name("asdfghjkl").age(30).salary(50000D).sex(1).build();
+            UserModel2 userModel = UserModel2.builder().name("inset-a").age(30).salary(50000D).sex(1).build();
             //执行插入操作
-            int result = sqlSession.insert("com.hm.mybatis.mapper.UserMapper2.insertUser", userModel);
+            int result = sqlSession.insert("com.mybatis.mapper.UserMapper3.insertUser", userModel);
             log.info("插入影响行数：{}", result);
             //提交事务
             sqlSession.commit();
@@ -64,7 +70,7 @@ public class Test3 {
     public void insertUser2() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
             //创建UserModel对象
-            UserModel2 userModel = UserModel2.builder().id(1L).name("路人甲Java").age(30).salary(50000D).sex(1).build();
+            UserModel2 userModel = UserModel2.builder().id(1L).name("insert-b").age(30).salary(50000D).sex(1).build();
             //执行插入操作
             int result = sqlSession.insert("com.hm.mybatis.mapper.UserMapper2.insertUser", userModel);
             log.info("影响行数：{}", result);
@@ -76,9 +82,9 @@ public class Test3 {
     public void updateUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
             //创建UserModel对象
-            UserModel2 userModel = UserModel2.builder().id(1L).name("路人甲Java，你1111好").age(18).salary(5000D).sex(0).build();
+            UserModel2 userModel = UserModel2.builder().id(1L).name("update-a").age(18).salary(5000D).sex(0).build();
             //执行更新操作
-            int result = sqlSession.update("com.hm.mybatis.mapper.UserMapper2.updateUser", userModel);
+            int result = sqlSession.update("com.mybatis.mapper.UserMapper3.updateUser", userModel);
             log.info("影响行数：{}", result);
         }
     }
@@ -90,15 +96,16 @@ public class Test3 {
             //定义需要删除的用户id
             Long userId = 1L;
             //执行删除操作
-            int result = sqlSession.delete("com.hm.mybatis.mapper.UserMapper2.deleteUser", userId);
+            int result = sqlSession.delete("com.mybatis.mapper.UserMapper3.deleteUser", userId);
             log.info("影响行数：{}", result);
         }
     }
 
+    // 查询操作
     @Test
     public void selectUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            List<UserModel2> usr = sqlSession.selectList("com.hm.mybatis.mapper.UserMapper2.getUserList");
+            List<UserModel2> usr = sqlSession.selectList("com.mybatis.mapper.UserMapper3.getUserList");
             log.info("结果：{}", usr);
         }
     }

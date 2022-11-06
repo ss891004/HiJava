@@ -14,37 +14,27 @@ import java.util.Objects;
 
 public class S05 {
 
-    // AOP: 在程序中具有公共特性的某些类/某些方法上进行拦截, 在方法执行的前面/后面/执行结果返回后增加执行一些方法。
-    /*
-目标对象(target)
-    目标对象指将要被增强的对象，即包含主业务逻辑的类对象。
+    //AOP: 在程序中具有公共特性的某些类/某些方法上进行拦截, 在方法执行的前面/后面/执行结果返回后增加执行一些方法。
 
-连接点(JoinPoint)
-    连接点，程序运行的某一个点，比如执行某个方法，在Spring AOP中Join Point总是表示一个方法的执行
-
-代理对象(Proxy)
-    AOP中会通过代理的方式，对目标对象生成一个代理对象，代理对象中会加入需要增强功能，通过代理对象来间接的方式目标对象，起到增强目标对象的效果。
-
-通知(Advice)
-    需要在目标对象中增强的功能，如上面说的：业务方法前验证用户的功能、方法执行之后打印方法的执行日志。
-    通知中有2个重要的信息：方法的什么地方，执行什么操作，这2个信息通过通知来指定。
-    方法的什么地方？之前、之后、包裹目标方法、方法抛出异常后等。
-
-    如：
-        在方法执行之前验证用户是否有效。
-        在方法执行之后，打印方法的执行耗时。
-        在方法抛出异常后，记录异常信息发送到mq。
-
-切入点(Pointcut )
-    用来指定需要将通知使用到哪些地方，比如需要用在哪些类的哪些方法上，切入点就是做这个配置的。
-
-切面（Aspect）
-    通知（Advice）和切入点（Pointcut）的组合。切面来定义在哪些地方（Pointcut）执行什么操作（Advice）。
-
-顾问（Advisor)
-    Advisor 其实它就是 Pointcut 与 Advice 的组合，Advice 是要增强的逻辑，而增强的逻辑要在什么地方执行是通过Pointcut来指定的，
-    所以 Advice 必需与 Pointcut 组合在一起，这就诞生了 Advisor 这个类，spring Aop中提供了一个Advisor接口将Pointcut 与 Advice 的组合起来。
-*/
+    /**
+     * 目标对象(target)
+     *  目标对象指将要被增强的对象，即包含主业务逻辑的类对象。
+     * 连接点(JoinPoint)
+     *  连接点，程序运行的某一个点，比如执行某个方法，在Spring AOP中Join Point总是表示一个方法的执行
+     * 代理对象(Proxy)
+     *  AOP中会通过代理的方式，对目标对象生成一个代理对象，代理对象中会加入需要增强功能，通过代理对象来间接的方式目标对象，起到增强目标对象的效果。
+     * 通知(Advice)
+     *  需要在目标对象中增强的功能，如上面说的：业务方法前验证用户的功能、方法执行之后打印方法的执行日志。
+     *  通知中有2个重要的信息：方法的什么地方，执行什么操作，这2个信息通过通知来指定。
+     *  方法的什么地方？之前、之后、包裹目标方法、方法抛出异常后等。
+     * 切入点(Pointcut)
+     *  用来指定需要将通知使用到哪些地方，比如需要用在哪些类的哪些方法上，切入点就是做这个配置的。
+     * 切面（Aspect）
+     *  通知（Advice）和切入点（Pointcut）的组合。切面来定义在哪些地方（Pointcut）执行什么操作（Advice）。
+     * 顾问（Advisor)
+     *  Advisor 其实它就是 Pointcut 与 Advice 的组合，Advice 是要增强的逻辑，而增强的逻辑要在什么地方执行是通过Pointcut来指定的，
+     *  所以 Advice 必需与 Pointcut 组合在一起，这就诞生了 Advisor 这个类，spring Aop中提供了一个Advisor接口将Pointcut 与 Advice 的组合起来。
+     */
 
 
     //需求：在work方法执行之前，打印一句：你好：userName
@@ -148,9 +138,9 @@ public class S05 {
             }
         };
 
-
         //创建Advisor，将pointcut和advice组装起来
         DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(pointcut, advice);
+
         //通过spring提供的代理创建工厂来创建代理
         ProxyFactory proxyFactory = new ProxyFactory();
         //为工厂指定目标对象
@@ -211,7 +201,6 @@ public class S05 {
         proxyFactory.setTarget(target);
         //调用addAdvisor方法，为目标添加增强的功能，即添加Advisor，可以为目标添加很多个Advisor
         proxyFactory.addAdvisor(advisor);
-
         //通过工厂提供的方法来生成代理对象
         UserService userServiceProxy = (UserService) proxyFactory.getProxy();
         //调用代理的work方法

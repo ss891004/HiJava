@@ -8,20 +8,23 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// mybatis 常用CRUD
 @Slf4j
 public class Test2 {
 
-    //动态插入
+    //动态插入 - 根据对象中的字段是否有值，来拼接sql
     @Test
     public void insert() throws Exception {
-        UserModel userModel1 = UserModel.builder().name("路人甲Java").build();
+        UserModel userModel1 = UserModel.builder().name("Java-Mybatis").build();
         MpUtil.callMapper(UserMapper.class, mapper -> {
             mapper.insert(userModel1);
             return null;
         });
+
         log.info("插入结果：{}", this.getModelById(userModel1.getId()));
+
         log.info("---------------------");
-        UserModel userModel2 = UserModel.builder().name("路人").age(30).salary(50000.00).build();
+        UserModel userModel2 = UserModel.builder().name("ss").age(30).salary(50000.00).build();
         MpUtil.callMapper(UserMapper.class, mapper -> {
             mapper.insert(userModel2);
             return null;
@@ -34,8 +37,8 @@ public class Test2 {
     public void insertBatch() throws Exception {
         List<UserModel> userModelList = new ArrayList<>();
         for (int i = 1; i <= 5; i++) {
-            userModelList.add(UserModel.builder().name("路人甲Java-" + i).age(30 + i).salary(10000.00 * i).build());
-            userModelList.add(UserModel.builder().name("javacode2018-" + i).age(30 + i).salary(10000.00 * i).build());
+            userModelList.add(UserModel.builder().name("Java1-" + i).age(30 + i).salary(10000.00 * i).build());
+            userModelList.add(UserModel.builder().name("Java2-" + i).age(30 + i).salary(10000.00 * i).build());
         }
         MpUtil.callMapper(UserMapper.class, mapper -> {
             mapper.insertBatch(userModelList);
@@ -68,20 +71,6 @@ public class Test2 {
         Long userId2 = 13L;
         count = MpUtil.callMapper(UserMapper.class, mapper -> mapper.update(UserModel.builder().id(userId2).name("ready").salary(1000.88D).build()));
         log.info("更新行数：{}", count);
-    }
-
-    //按用户id查询
-    public UserModel getModelById(Long userId) throws Exception {
-        //查询指定id的数据
-        Map<String, Object> map = new HashMap<>();
-        map.put("id", userId);
-        return MpUtil.callMapper(UserMapper.class, mapper -> {
-            List<UserModel> userModelList = mapper.getModelList(map);
-            if (userModelList.size() == 1) {
-                return userModelList.get(0);
-            }
-            return null;
-        });
     }
 
     //查询所有数据
@@ -145,4 +134,20 @@ public class Test2 {
         List<UserModel> userModelList = MpUtil.callMapper(UserMapper.class, mapper -> mapper.getModelList(map));
         log.info("结果:{}", userModelList);
     }
+
+
+    //按用户id查询
+    public UserModel getModelById(Long userId) throws Exception {
+        //查询指定id的数据
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", userId);
+        return MpUtil.callMapper(UserMapper.class, mapper -> {
+            List<UserModel> userModelList = mapper.getModelList(map);
+            if (userModelList.size() == 1) {
+                return userModelList.get(0);
+            }
+            return null;
+        });
+    }
+
 }

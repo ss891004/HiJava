@@ -13,6 +13,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public class S02 {
+    //通用代理的2种实现：
+    //  jdk动态代理
+    //  cglib代理
 
 
     // 如果接口众多，那就需要一个通用的代理类，主要涉及到下面2个类
@@ -20,18 +23,24 @@ public class S02 {
     //java.lang.reflect.InvocationHandler
 
     // jdk动态代理
-
     // 创建代理：方式一
     // 1.调用Proxy.getProxyClass方法获取代理类的Class对象
     // 2.使用InvocationHandler接口创建代理类的处理器
     // 3.通过代理类和InvocationHandler创建代理对象
     // 4.上面已经创建好代理对象了，接着我们就可以使用代理对象了
 
-    //jdk自带的代理使用上面有个限制，只能为接口创建代理类，如果需要给具体的类创建代理类，需要用后面要说的cglib
+    // jdk中的Proxy只能为接口生成代理类。
+    // Proxy类中提供的几个常用的静态方法大家需要掌握
+    // 通过Proxy创建代理对象，当调用代理对象任意方法时候，会被InvocationHandler接口中的invoke方法进行处理，这个接口内容是关键
+
     @Test
-    public void jdk_proxy1() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public void jdk_proxy1() throws NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException,
+            InstantiationException {
         // 1. 获取接口对应的代理类
-        Class<IService> proxyClass = (Class<IService>) Proxy.getProxyClass(IService.class.getClassLoader(), IService.class);
+        Class<IService> proxyClass = (Class<IService>)
+                Proxy.getProxyClass(IService.class.getClassLoader(),
+                IService.class);
 
         // 2. 创建代理类的处理器
         InvocationHandler invocationHandler = new InvocationHandler() {
@@ -58,7 +67,7 @@ public class S02 {
     // 3.使用代理对象
 
     @Test
-    public void jdk_proxy2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public void jdk_proxy2() {
         // 1. 创建代理类的处理器
         InvocationHandler invocationHandler = new InvocationHandler() {
             @Override
@@ -76,13 +85,12 @@ public class S02 {
     }
 
 
-    // jdk中的Proxy只能为接口生成代理类。
-    // Proxy类中提供的几个常用的静态方法大家需要掌握
-    // 通过Proxy创建代理对象，当调用代理对象任意方法时候，会被InvocationHandler接口中的invoke方法进行处理，这个接口内容是关键
 
+    // 任意接口中的方法耗时统计
     @Test
-    public void costTimeProxy() {
+    public void test1() {
         IService serviceA = CostTimeInvocationHandler.createProxy(new ServiceA(), IService.class);
+        IService serviceA1 = new ServiceA();
         IService serviceB = CostTimeInvocationHandler.createProxy(new ServiceB(), IService.class);
         serviceA.m1();
         serviceA.m2();
@@ -92,11 +100,11 @@ public class S02 {
         serviceB.m3();
     }
 
-
+    // 任意接口中的方法耗时统计
     @Test
-    public void userService() {
+    public void test2() {
         IUserService userService = CostTimeInvocationHandler.createProxy(new UserService(), IUserService.class);
-        userService.insert("路人甲Java");
+        userService.insert("Java～～");
     }
 
 

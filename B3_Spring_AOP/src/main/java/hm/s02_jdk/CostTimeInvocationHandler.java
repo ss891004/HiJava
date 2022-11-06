@@ -31,6 +31,9 @@ public class CostTimeInvocationHandler implements InvocationHandler {
         } else if (!targetInterface.isAssignableFrom(target.getClass())) {
             throw new IllegalStateException("target必须是targetInterface接口的实现类!");
         }
-        return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new CostTimeInvocationHandler(target));
+        return (T) Proxy.newProxyInstance(
+                target.getClass().getClassLoader(),
+                target.getClass().getInterfaces(),
+                new CostTimeInvocationHandler(target));
     }
 }

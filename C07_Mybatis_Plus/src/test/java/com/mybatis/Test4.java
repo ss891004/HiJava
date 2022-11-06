@@ -1,6 +1,6 @@
 package com.mybatis;
 
-import com.mybatis.mapper.UserMapper2;
+import com.mybatis.mapper.UserMapper3;
 import com.mybatis.model.UserModel2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
@@ -33,7 +33,7 @@ public class Test4 {
     @Test
     public void insertUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper3 mapper = sqlSession.getMapper(UserMapper3.class);
             //创建UserModel对象
             UserModel2 userModel2 = UserModel2.builder().id(System.currentTimeMillis()).name("路人甲Java").age(30).salary(50000D).sex(1).build();
             //执行插入操作
@@ -45,7 +45,7 @@ public class Test4 {
     @Test
     public void updateUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper3 mapper = sqlSession.getMapper(UserMapper3.class);
             //创建UserModel对象
             UserModel2 userModel2 = UserModel2.builder().id(1612791474497L).name("路人甲Jav333333a，你好").age(18).salary(5000D).sex(0).build();
             //执行更新操作
@@ -57,7 +57,7 @@ public class Test4 {
     @Test
     public void deleteUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper3 mapper = sqlSession.getMapper(UserMapper3.class);
             //定义需要删除的用户id
             Long userId = 2L;
             //执行删除操作
@@ -69,7 +69,7 @@ public class Test4 {
     @Test
     public void getUserList() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
-            UserMapper2 mapper = sqlSession.getMapper(UserMapper2.class);
+            UserMapper3 mapper = sqlSession.getMapper(UserMapper3.class);
             //执行查询操作
             List<UserModel2> userModel2List = mapper.getUserList();
             userModel2List.forEach(item -> {
@@ -77,4 +77,6 @@ public class Test4 {
             });
         }
     }
+    //============================================================================
+
 }

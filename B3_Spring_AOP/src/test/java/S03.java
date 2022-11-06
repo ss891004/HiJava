@@ -23,22 +23,11 @@ public class S03 {
         /*3.设置回调，需实现org.springframework.cglib.proxy.Callback接口，
         此处我们使用的是org.springframework.cglib.proxy.MethodInterceptor，也是一个接口，实现了Callback接口，
         当调用代理对象的任何方法的时候，都会被MethodInterceptor接口的invoke方法处理*/
-        enhancer.setCallback(new MethodInterceptor() {
-            /**
-             * 代理对象方法拦截器
-             *
-             * @param o           代理对象
-             * @param method      被代理的类的方法，即Service1中的方法
-             * @param objects     调用方法传递的参数
-             * @param methodProxy 方法代理对象
-             */
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                System.out.println("调用方法:" + method);
-                //可以调用MethodProxy的invokeSuper调用被代理类的方法
-                Object result = methodProxy.invokeSuper(o, objects);
-                return result;
-            }
+        enhancer.setCallback((MethodInterceptor) (o, method, objects, methodProxy) -> {
+            System.out.println("调用方法:" + method);
+            //可以调用MethodProxy的invokeSuper调用被代理类的方法
+            Object result = methodProxy.invokeSuper(o, objects);
+            return result;
         });
 
 
@@ -52,22 +41,18 @@ public class S03 {
     }
 
 
-
     // 看出m1和m2方法都被拦截器处理了，而m2方法是在Service1的m1方法中调用的，也被拦截处理了。
     @Test
     public void test2() {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Service2.class);
-        enhancer.setCallback(new MethodInterceptor() {
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                System.out.println("调用方法:" + method);
-                Object result = methodProxy.invokeSuper(o, objects);
-                return result;
-            }
+        enhancer.setCallback((MethodInterceptor) (o, method, objects, methodProxy) -> {
+            System.out.println("调用方法:" + method);
+            Object result = methodProxy.invokeSuper(o, objects);
+            return result;
         });
         Service2 proxy = (Service2) enhancer.create();
-        proxy.m1(); //@1
+        proxy.m1(); //拦截Service2 中所有的方法，只要方法被调用，都会被拦截
     }
 
     // 拦截所有方法并返回固定值（FixedValue）
@@ -75,12 +60,7 @@ public class S03 {
     public void test3() {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Service3.class);
-        enhancer.setCallback(new FixedValue() {
-            @Override
-            public Object loadObject() throws Exception {
-                return "路人甲";
-            }
-        });
+        enhancer.setCallback((FixedValue) () -> "固定值");
         Service3 proxy = (Service3) enhancer.create();
         System.out.println(proxy.m1());//@1
         System.out.println(proxy.m2()); //@2
@@ -98,9 +78,7 @@ public class S03 {
         System.out.println(proxy.m2());
     }
 
-
-    // 以insert开头的方法需要统计方法耗时
-    // 以get开头的的方法直接返回固定字符串
+    //不同的方法使用不同的拦截器（CallbackFilter）
     @Test
     public void test5() {
         Enhancer enhancer = new Enhancer();
@@ -108,7 +86,7 @@ public class S03 {
 
         //创建2个Callback
         Callback[] callbacks = {
-                //这个用来拦截所有insert开头的方法
+                //以insert开头的方法需要统计方法耗时
                 new MethodInterceptor() {
                     @Override
                     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
@@ -119,21 +97,15 @@ public class S03 {
                         return result;
                     }
                 },
-                //下面这个用来拦截所有get开头的方法，返回固定值的
+                //以get开头的的方法直接返回固定字符串
                 new FixedValue() {
                     @Override
                     public Object loadObject() throws Exception {
-                        return "路人甲Java";
+                        return "固定值";
                     }
                 }
         };
 
-        enhancer.setCallbackFilter(new CallbackFilter() {
-            @Override
-            public int accept(Method method) {
-                return 0;
-            }
-        });
 
         //调用enhancer的setCallbacks传递Callback数组
         enhancer.setCallbacks(callbacks);
@@ -169,6 +141,7 @@ public class S03 {
     }
 
 
+    //对test5的优化（CallbackHelper）
     @Test
     public void test5_new() {
         Enhancer enhancer = new Enhancer();
@@ -180,21 +153,24 @@ public class S03 {
             System.out.println(method + "，耗时(纳秒):" + (endTime - starTime));
             return result;
         };
+
         //下面这个用来拦截所有get开头的方法，返回固定值的
-        Callback fixdValueCallback = (FixedValue) () -> "路人甲Java";
+        Callback fixedValueCallback = (FixedValue) () -> "test5-fixed";
+
         CallbackHelper callbackHelper = new CallbackHelper(Service5.class, null) {
             @Override
             protected Object getCallback(Method method) {
-                return method.getName().startsWith("insert") ? costTimeCallback : fixdValueCallback;
+                return method.getName().startsWith("insert") ? costTimeCallback : fixedValueCallback;
             }
         };
+
         enhancer.setSuperclass(Service5.class);
         //调用enhancer的setCallbacks传递Callback数组
         enhancer.setCallbacks(callbackHelper.getCallbacks());
-        /**
-         * 设置CallbackFilter,用来判断某个方法具体走哪个Callback
-         */
+
+        //设置CallbackFilter,用来判断某个方法具体走哪个Callback
         enhancer.setCallbackFilter(callbackHelper);
+
         Service5 proxy = (Service5) enhancer.create();
         System.out.println("---------------");
         proxy.insert1();
@@ -207,6 +183,7 @@ public class S03 {
     }
 
 
+    //实现通用的统计任意类方法耗时代理类
     @Test
     public void test7() {
         //创建Service1代理
