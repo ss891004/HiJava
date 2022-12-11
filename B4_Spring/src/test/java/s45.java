@@ -1,5 +1,5 @@
-import hm.s44_spring_tx.MainConfig6;
-import hm.s44_spring_tx.TxService;
+import hm.s43_tx.MainConfig6;
+import hm.s43_tx.TxService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

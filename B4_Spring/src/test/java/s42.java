@@ -22,7 +22,6 @@ public class s42 {
      * 2. 创建JdbcTemplate，new JdbcTemplate(dataSource)
      * 3. 调用JdbcTemplate的方法操作db，如增删改查
      */
-
     @Test
     public void testSelect() {
         //1.创建数据源DataSource

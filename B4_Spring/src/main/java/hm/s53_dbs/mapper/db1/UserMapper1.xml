@@ -1,0 +1,10 @@
+<?s01_xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hm.s53_dbs.mapper.db1.UserMapper1" >
+    <insert id="insert" parameterType="hm.s53_dbs.model.User1Model" keyProperty="id" useGeneratedKeys="true">
+        <![CDATA[ INSERT INTO `t_user1` (name) VALUES (#{name}) ]]>
+    </insert>
+    <select id="getList" resultType="hm.s53_dbs.model.User1Model">
+        <![CDATA[ SELECT id,name FROM t_user1  ]]>
+    </select>
+</mapper>

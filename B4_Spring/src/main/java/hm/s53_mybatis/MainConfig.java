@@ -1,6 +1,7 @@
 package hm.s53_mybatis;
 
 
+import hm.s53_mybatis.mapper.UserMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;

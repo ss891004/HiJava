@@ -34,6 +34,57 @@
 ### 配置文件
 ![3](../../../../../img/3.png )
 
+
+### 别名
+```text
+方式1
+使用typeAlias元素进行注册
+如下：
+
+<typeAliases>
+    <typeAlias type="玩转的类型名称" alias="别名" />
+</typeAliases>
+typeAliases元素中可以包含多个typeAlias子元素，每个typeAlias可以给一个类型注册别名，有2个属性需要指定：
+
+type：完整的类型名称
+
+alias：别名
+
+方式2
+通过packege元素批量注册
+<typeAliases>
+    <package name="需要扫描的包"/>
+</typeAliases>
+
+方式3
+package结合@Alias批量注册并指定别名
+```
+
+### 属性配置文件详解
+```text
+
+```
+
+### mappers（映射器）
+Mapper配置的几种方法：
+<mapper resource=" " />
+使用相对于类路径的资源
+如：<mapper resource="sqlmap/User.xml" />
+
+<mapper class=" " />
+使用mapper接口类路径
+如：<mapper class="cn.xx.mybatis.mapper.UserMapper"/>
+注意：此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
+
+<package name=""/>
+注册指定包下的所有mapper接口
+如：<package name="cn.xx.mybatis.mapper"/>
+注意：此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
+
+
+
+
+
 ### mybatis 架构
 ![4](../../../../../img/4.png )
 
@@ -49,22 +100,6 @@ ${}表示拼接sql串，通过${}可以将parameterType 传入的内容拼接在
   + 4、接口名称和映射文件的名称最好保持一致
   + 5、接口和映射文件最好放到一起
 
-
-### mappers（映射器）
-Mapper配置的几种方法：
-<mapper resource=" " />
-使用相对于类路径的资源
-如：<mapper resource="sqlmap/User.xml" />
-
-<mapper class=" " />
-使用mapper接口类路径
-如：<mapper class="cn.itcast.mybatis.mapper.UserMapper"/>
-注意：此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
-
-<package name=""/>
-注册指定包下的所有mapper接口
-如：<package name="cn.itcast.mybatis.mapper"/>
-注意：此种方法要求mapper接口名称和mapper映射文件名称相同，且放在同一个目录中。
 
 
 ### 获取参数

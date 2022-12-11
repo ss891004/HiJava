@@ -31,6 +31,11 @@ public class Test6 {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
+    // 建库建表
+    // mybatis增删改返回值说明及源码解析
+    // jdbc获取自增值的3种方式详解
+    // mybatis获取自增值的3种方式详解
+
     @Test
     public  void insertUser()
     {
@@ -121,8 +126,8 @@ public class Test6 {
     }
 
 
-
-
+    // mybatis获取主键的3种方式
+    //  方式1：内部使用jdbc内置的方式
     @Test
     public  void insertUser2()
     {
@@ -135,6 +140,7 @@ public class Test6 {
         }
     }
 
+    // 方式2：插入后查询获取主键
     @Test
     public  void insertUser3()
     {
@@ -147,6 +153,7 @@ public class Test6 {
         }
     }
 
+    // 方式2：插入前查询获取主键
     @Test
     public  void insertUser4()
     {

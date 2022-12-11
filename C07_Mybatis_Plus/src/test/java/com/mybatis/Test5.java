@@ -93,16 +93,16 @@ public class Test5 {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
             UserMapper4 mapper = sqlSession.getMapper(UserMapper4.class);
 
-            //arg0,agr1
-            UserModel2 um1= mapper.getByIdOrName1(1612797927957L,"asdfghjkl");
+            //arg0, agr1
+            UserModel2 um1 = mapper.getByIdOrName1(1612797927957L, "asdfghjkl");
             System.out.println(um1);
 
             //param1,param2
-            UserModel2 um2 = mapper.getByIdOrName2(1612797927957L,"asdfghjkl");
+            UserModel2 um2 = mapper.getByIdOrName2(1612797927957L, "asdfghjkl");
             System.out.println(um2);
 
             //指定参数名
-            UserModel2 um3 = mapper.getByIdOrName3(1612797927957L,"asdfghjkl");
+            UserModel2 um3 = mapper.getByIdOrName3(1612797927957L, "asdfghjkl");
             System.out.println(um3);
         }
     }
@@ -115,13 +115,10 @@ public class Test5 {
             List<Long> ids = new ArrayList<Long>();
             ids.add(1L);
             ids.add(2L);
-            List<UserModel2> um1= mapper.getListByIdCollection(ids);
+            List<UserModel2> um1 = mapper.getListByIdCollection(ids);
             System.out.println(um1);
 
         }
     }
-
-
-
 
 }
