@@ -16,16 +16,13 @@
     <modules>
         <module>A1_JavaSE</module>
         <module>A3_Servlet</module>
-        <module>B2_Spring_IoC</module>
-        <module>B3_Spring_AOP</module>
-        <module>B4_Spring</module>
+        <module>B1_Spring</module>
         <module>B8_SpringBoot</module>
+        <module>B11_MQ</module>
         <module>C01_SpringDoc</module>
         <module>C02_Springfox2</module>
         <module>C03_Springfox3</module>
         <module>C05_Knife4j3</module>
-        <module>B11_MQ</module>
-        <module>C06_WxPay</module>
         <module>C07_Mybatis_Plus</module>
     </modules>
 
@@ -37,6 +34,7 @@
         <junit.version>4.12</junit.version>
         <spring.version>5.3.21</spring.version>
         <lombok.version>1.18.24</lombok.version>
+        <springdoc-openapi-ui.version>1.6.14</springdoc-openapi-ui.version>
     </properties>
 
 

@@ -111,6 +111,15 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/io.github.admin4j/http -->
+        <dependency>
+            <groupId>io.github.admin4j</groupId>
+            <artifactId>http</artifactId>
+            <version>0.4.6</version>
+        </dependency>
+
+
+
     </dependencies>
 
 

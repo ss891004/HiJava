@@ -12,8 +12,12 @@
         <option value="$PROJECT_DIR$/B05_Mybatis_Plus/pom.xml" />
         <option value="$PROJECT_DIR$/B10_redis/pom.xml" />
         <option value="$PROJECT_DIR$/B1_Mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/B2_Spring_IoC/pom.xml" />
+        <option value="$PROJECT_DIR$/B3_Spring_AOP/pom.xml" />
+        <option value="$PROJECT_DIR$/B4_Spring/pom.xml" />
         <option value="$PROJECT_DIR$/B5_SpringMVC/pom.xml" />
         <option value="$PROJECT_DIR$/C04_itext5/pom.xml" />
+        <option value="$PROJECT_DIR$/C06_WxPay/pom.xml" />
         <option value="$PROJECT_DIR$/C08_Mybatis_sb/pom.xml" />
       </set>
     </option>

@@ -12,7 +12,7 @@
 
     <servlet>
         <servlet-name>hservlet</servlet-name>
-        <servlet-class>com.mp.HelloServlet2</servlet-class>
+        <servlet-class>com.mp.controller.HelloServlet2</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>hservlet</servlet-name>
@@ -22,7 +22,7 @@
     <!--    在Servlet的配置文件web.xml中，可以使用一个或多个<init-param>标签为servlet配置一些初始化参数。-->
     <servlet>
         <servlet-name>helloServlet7</servlet-name>
-        <servlet-class>com.mp.HelloServlet7</servlet-class>
+        <servlet-class>com.mp.controller.HelloServlet7</servlet-class>
         <!--配置ServletConfigDemo1的初始化参数 -->
         <init-param>
             <param-name>name</param-name>

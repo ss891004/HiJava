@@ -7,14 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="C06_WxPay" />
-        <module name="B2_Spring_IoC" />
         <module name="C07_Mybatis_Plus" />
-        <module name="B4_Spring" />
         <module name="A3_Servlet" />
         <module name="B11_MQ" />
+        <module name="B1_Spring" />
         <module name="C03_Springfox3" />
-        <module name="B3_Spring_AOP" />
         <module name="C01_SpringDoc" />
         <module name="C02_Springfox2" />
         <module name="C05_Knife4j3" />
@@ -26,8 +23,12 @@
       <module name="B05_Mybatis_Plus" target="1.8" />
       <module name="B10_redis" target="1.8" />
       <module name="B1_Mybatis" target="1.8" />
+      <module name="B2_Spring_IoC" target="1.8" />
+      <module name="B3_Spring_AOP" target="1.8" />
+      <module name="B4_Spring" target="1.8" />
       <module name="B5_SpringMVC" target="1.8" />
       <module name="C04_itext5" target="1.8" />
+      <module name="C06_WxPay" target="1.7" />
       <module name="C08_Mybatis_sb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -39,6 +40,7 @@
       <module name="B10_redis" options="-parameters" />
       <module name="B11_MQ" options="-parameters" />
       <module name="B1_Mybatis" options="-parameters" />
+      <module name="B1_Spring" options="-parameters" />
       <module name="B2_Spring_IoC" options="-parameters" />
       <module name="B3_Spring_AOP" options="-parameters" />
       <module name="B4_Spring" options="-parameters" />
