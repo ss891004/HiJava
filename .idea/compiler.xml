@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="C07_Mybatis_Plus" />
         <module name="A3_Servlet" />
         <module name="B11_MQ" />
         <module name="B1_Spring" />
@@ -29,6 +28,7 @@
       <module name="B5_SpringMVC" target="1.8" />
       <module name="C04_itext5" target="1.8" />
       <module name="C06_WxPay" target="1.7" />
+      <module name="C07_Mybatis_MP" target="1.8" />
       <module name="C08_Mybatis_sb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -51,7 +51,7 @@
       <module name="C03_Springfox3" options="-parameters" />
       <module name="C05_Knife4j3" options="-parameters" />
       <module name="C06_WxPay" options="-parameters" />
-      <module name="C07_Mybatis_Plus" options="-parameters" />
+      <module name="C07_Mybatis_MP" options="-parameters" />
       <module name="C08_Mybatis_sb" options="-parameters" />
     </option>
   </component>

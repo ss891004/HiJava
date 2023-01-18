@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>C07_Mybatis_Plus</artifactId>
+    <artifactId>C07_Mybatis_MP</artifactId>
     <name>C07_Mybatis_Plus</name>
 
     <properties>
