@@ -7,14 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="A3_Servlet" />
-        <module name="B11_MQ" />
-        <module name="B1_Spring" />
-        <module name="C03_Springfox3" />
+        <module name="C07_Mybatis_MP" />
         <module name="C01_SpringDoc" />
         <module name="C02_Springfox2" />
         <module name="C05_Knife4j3" />
+        <module name="A3_Servlet" />
+        <module name="B11_MQ" />
+        <module name="B1_Spring" />
         <module name="A1_JavaSE" />
+        <module name="C03_Springfox3" />
         <module name="B8_SpringBoot" />
       </profile>
     </annotationProcessing>
@@ -28,7 +29,6 @@
       <module name="B5_SpringMVC" target="1.8" />
       <module name="C04_itext5" target="1.8" />
       <module name="C06_WxPay" target="1.7" />
-      <module name="C07_Mybatis_MP" target="1.8" />
       <module name="C08_Mybatis_sb" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -4,9 +4,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.*;
-import s30_beanLife.Car;
-import s30_beanLife.CompositeObj;
-import s30_beanLife.User;
+import s23_beanLife.Car;
+import s23_beanLife.CompositeObj;
+import s23_beanLife.User;
 
 import java.util.Arrays;
 

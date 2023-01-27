@@ -1,5 +1,5 @@
-import hm.s43_tx.MainConfig6;
-import hm.s43_tx.TxService;
+import s43_tx.MainConfig6;
+import s43_tx.TxService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

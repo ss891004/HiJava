@@ -19,7 +19,7 @@
         <!-- 指定job的分组 -->
         <property name="group" value="group1"/>
         <!-- 指定具体的job类 -->
-        <property name="jobClass" value="hm.quartz.HelloJob"/>
+        <property name="jobClass" value="s30_aop.quartz.HelloJob"/>
         <!-- 必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中会删除该任务  -->
         <property name="durability" value="true"/>
     </bean>
@@ -32,7 +32,7 @@
         <!-- 指定Cron 的表达式 ，当前是每隔5s运行一次 -->
         <property name="cronExpression" value="0/5 * * * * ?" />
     </bean>
-    <bean id="helloJob2" class="hm.quartz.HelloJob2"></bean>
+    <bean id="helloJob2" class="s30_aop.quartz.HelloJob2"></bean>
     <bean id="hiJobDtl" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="helloJob2"></property>
         <property name="targetMethod" value="testFun"></property>

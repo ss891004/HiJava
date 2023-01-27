@@ -1,5 +1,5 @@
-import hm.s42_jdbcTemplate.DataSourceUtils;
-import hm.s42_jdbcTemplate.User;
+import s42_jdbcTemplate.DataSourceUtils;
+import s42_jdbcTemplate.User;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.junit.Test;
 import org.springframework.jdbc.core.*;

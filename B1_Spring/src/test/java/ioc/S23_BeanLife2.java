@@ -6,7 +6,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.support.*;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
-import s30_beanLife.*;
+import s23_beanLife.*;
 
 public class S23_BeanLife2 {
 

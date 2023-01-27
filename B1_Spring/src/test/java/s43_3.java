@@ -1,5 +1,5 @@
-import hm.s43_tx.MainConfig3;
-import hm.s43_tx.UserService;
+import s43_tx.MainConfig3;
+import s43_tx.UserService;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

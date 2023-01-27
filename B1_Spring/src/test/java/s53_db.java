@@ -1,6 +1,6 @@
-import hm.s53_mybatis.service.IUserService;
-import hm.s53_mybatis.MainConfig;
-import hm.s53_mybatis.model.UserModel;
+import s53_mybatis.service.IUserService;
+import s53_mybatis.MainConfig;
+import s53_mybatis.model.UserModel;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
