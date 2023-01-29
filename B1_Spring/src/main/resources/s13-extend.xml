@@ -1,0 +1,35 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="e1" class="s13.ServiceA"/>
+
+    <bean id="e2" class="s13.ServiceB" primary="true">
+        <property name="serviceA" ref="e1"/>
+        <property name="name" value="Java"/>
+    </bean>
+
+    <bean id="e3" class="s13.ServiceC" primary="true">
+        <property name="serviceA" ref="e1"/>
+        <property name="name" value="Python"/>
+    </bean>
+
+<!--    ======================================================-->
+
+<!--    定义bean为一个抽象的bean-->
+    <bean id="baseService" abstract="true">
+        <property name="name" value="Python_Java"/>
+        <property name="serviceA" ref="e1"/>
+    </bean>
+
+    <bean id="e4" class="s13.ServiceB" parent="baseService"/>
+    <bean id="e5" class="s13.ServiceC" parent="baseService">
+        <property name="name" value="e5-Python_Java"/>
+    </bean>
+
+
+</beans>

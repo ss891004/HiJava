@@ -1,0 +1,14 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="s1" class="s10.PrimaryBean$ServiceA" primary="true"/>
+    <bean id="s2" class="s10.PrimaryBean$ServiceB"/>
+
+    <bean id="s3" class="s10.PrimaryBean" autowire="byType"/>
+    <bean id="s4" class="s10.PrimaryBean" autowire="byType" autowire-candidate="false"/>
+</beans>

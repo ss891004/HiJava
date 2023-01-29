@@ -7,6 +7,7 @@ import s00_hi.HelloWorld;
 
 public class S00_hi {
 
+    // 什么是spring容器， 什么是bean
     @Test
     public void Test() {
         //1.bean配置文件位置

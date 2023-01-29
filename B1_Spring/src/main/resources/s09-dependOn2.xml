@@ -1,0 +1,18 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="b3" class="s09_depend_on.StrongDependenceBean$Bean3">
+        <constructor-arg index="0" ref="b2"/>
+    </bean>
+
+    <bean id="b1" class="s09_depend_on.StrongDependenceBean$Bean1"/>
+
+    <bean id="b2" class="s09_depend_on.StrongDependenceBean$Bean2">
+        <constructor-arg index="0" ref="b1"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,12 @@
+<?s01_xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--   ServiceA 和 ServiceB 都是 IService 的实现类，那么bean（serviceA，serviceB，serviceC）就无法唯一匹配   -->
+    <bean id="serviceA" class="s10.SetterBean$ServiceA" />
+    <bean id="serviceB" class="s10.SetterBean$ServiceB" autowire-candidate="false"/>
+    <bean id="serviceC" class="s10.SetterBean$ServiceB" autowire-candidate="false"/>
+    <bean id="setterBean" class="s10.SetterBean" autowire="byType" />
+</beans>

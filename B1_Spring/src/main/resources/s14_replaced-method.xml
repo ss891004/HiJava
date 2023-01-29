@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="serv_1" class="s14.Serv1" scope="prototype"/>
+
+    <bean id="serviceBMethodReplacer" class="s14.ServiceBMethodReplacer"/>
+
+    <bean id="serv_3" class="s14.Serv3">
+        <replaced-method name="getServ_1" replacer="serviceBMethodReplacer"/>
+    </bean>
+
+</beans>
