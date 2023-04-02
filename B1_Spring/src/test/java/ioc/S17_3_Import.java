@@ -1,8 +1,8 @@
 package ioc;
 
-import S22_import.t1.S22Bean;
-import S22_import.t2.S22Bean2;
-import S22_import.t3.S22Bean3;
+import s17_3_import.t1.Bean1;
+import s17_3_import.t2.Bean2;
+import s17_3_import.t3.Bean3;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,35 +13,26 @@ public class S17_3_Import {
 
     @Test
     public void Test1() {
-
-        // value为普通的类
-        AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(S22Bean.class);
+        AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(Bean1.class);
 
         for (String beanName : aca.getBeanDefinitionNames()) {
             System.out.println(beanName + "->" + aca.getBean(beanName));
         }
     }
-
-
 
     @Test
     public void Test2() {
-
-        // value为普通的类
-        AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(S22Bean2.class);
+        AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(Bean2.class);
 
         for (String beanName : aca.getBeanDefinitionNames()) {
             System.out.println(beanName + "->" + aca.getBean(beanName));
         }
     }
-
-
 
     @Test
     public void Test3() {
 
-        // value为普通的类
-        AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(S22Bean3.class);
+        AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(Bean3.class);
 
         for (String beanName : aca.getBeanDefinitionNames()) {
             System.out.println(beanName + "->" + aca.getBean(beanName));

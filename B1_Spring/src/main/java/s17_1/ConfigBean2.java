@@ -1,8 +1,9 @@
 package s17_1;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class ConfigBean2 {
 
     // 被@Bean修饰的方法都只被调用了一次
