@@ -1,5 +1,3 @@
-
-
 ### 为什么需要spring
 ```text
 spring是一个非常优秀的java框架，其目标是为了简化java企业级开发，spring出来已经十几年了，这期间也一直围绕着这个目标在进行，
@@ -8,7 +6,7 @@ spring是一个非常优秀的java框架，其目标是为了简化java企业级
 ```
 
 
-### 引入sprinig
+### 引入spring
 ```text
 spring容器
 
