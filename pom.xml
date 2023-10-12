@@ -22,8 +22,10 @@
         <module>C01_SpringDoc</module>
         <module>C02_Springfox2</module>
         <module>C03_Springfox3</module>
-        <module>C05_Knife4j3</module>
-        <module>C06_mp</module>
+        <module>C04_Knife4j3</module>
+        <module>C05_m_s</module>
+        <module>C06_mp_s</module>
+        <module>C07_mp_sb</module>
     </modules>
 
     <properties>
@@ -36,6 +38,4 @@
         <lombok.version>1.18.24</lombok.version>
         <springdoc-openapi-ui.version>1.6.14</springdoc-openapi-ui.version>
     </properties>
-
-
 </project>

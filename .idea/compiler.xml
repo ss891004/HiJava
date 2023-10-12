@@ -7,16 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="C06_mp_s" />
         <module name="C01_SpringDoc" />
         <module name="C02_Springfox2" />
-        <module name="C05_Knife4j3" />
-        <module name="C06_mp" />
         <module name="A3_Servlet" />
         <module name="B11_MQ" />
+        <module name="C05_m_s" />
         <module name="B1_Spring" />
         <module name="A1_JavaSE" />
         <module name="C03_Springfox3" />
         <module name="B8_SpringBoot" />
+        <module name="C07_mp_sb" />
+        <module name="C04_Knife4j3" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -50,9 +52,11 @@
       <module name="C01_SpringDoc" options="-parameters" />
       <module name="C02_Springfox2" options="-parameters" />
       <module name="C03_Springfox3" options="-parameters" />
-      <module name="C05_Knife4j3" options="-parameters" />
+      <module name="C04_Knife4j3" options="-parameters" />
+      <module name="C05_m_s" options="-parameters" />
       <module name="C06_WxPay" options="-parameters" />
-      <module name="C06_mp" options="-parameters" />
+      <module name="C06_mp_s" options="-parameters" />
+      <module name="C07_mp_sb" options="-parameters" />
       <module name="C07_mybatis_mybatis_plus" options="-parameters" />
       <module name="C08_Mybatis_sb" options="-parameters" />
     </option>
