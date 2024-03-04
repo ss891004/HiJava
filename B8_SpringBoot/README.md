@@ -118,6 +118,7 @@ public class MyApplication {
 ### spring boot 核心配置
 + application.yml
 + YAML
+
 + @ConfigurationProperties
 + @Value  
 + @PropertySource
@@ -141,18 +142,102 @@ public class MyApplication {
   + application-{profile}.properties 中配置各个环境不同的内容
   + 通过命令⾏⽅式去激活不同环境的配置
 
-
 + @Configuration  相当于spring中xml文件中的beans 标签
 + @Bean 相当于spring中xml文件的bean 标签
 
+####  注解
++ @EnableAutoConfiguration
++ @ComponentScan
 
-+ 配置文件位置
-  + file:./config/ 当前项目的config目录下（最高级别）
+
+#### 配置文件位置
+  + file:./config/ 当前项目的config目录下（最高级别, src 同级目录）
   + file:./ 当前项目的根目录下
   + classpath:/config/ 类路径的config目录下
   + classpath:/ 类路径的根目录下（最低级别）
+  + java -jar xx.jar --spring.config.name=app --spring.config.location=classpath:/
+
+
+#### Web容器配置
++ spring-boot-starter-web ， 默认使用的Tomcat作为web容器。
++ application.yml
+  + server.port
+  + server.servlet.session.timeout
+  + server.servlet.context-path
++ https 配置
+  + jdk - keytool
+
+#### yaml
+
+
+#### profile
+  + application-dev.yml
+  + application-prod.yml
+  + java -jar xxx.jar --spring.profiles.active=prod
 
   
+### 视图层技术
++ Thymeleaf
++ FreeMarker
++ springs默认：pring-boot-starter-thymeleaf  
++ 默认的模版位置： classpath：/templates/  默认的模版后缀 .html
++ 静态资源访问
++ 文件上传
++ 启动系统任务
+  + CommandLineRunner
+    + springboot项目启动是会遍历所有CommandLineRunner的实现类，可以使用@Order的来设置调用顺序
+  + ApplicationRunner
+
+
+### 整合持久层
++ JdbcTemplate
+  + spring-boot-starter-jdbc   
+  + application.yml
+    + spring.datasource.type
+    + spring.datasource.url
+    + spring.datasource.username
+    + spring.datasource.password
+  + 
++ MyBatis
+  + mybatis-spring-boot-starter
+  + mysql-connector-java
++ JPA
++ 多数据源
+
+
+### NoSQL
++ redis
+  + spring-boot-starter-data-redis
+  + application.yml
+    + spring.redis.database
+    + spring.redis.host
+    + spring.redis.port
+    + spring.redis.password
++ mongodb
++ session 共享
+  + 通过独立的服务器上的redis
+  + spring-boot-starter-data-redis
+  + spring-session-data-redis
+
+### RESTful
+
+
+### 消息服务 （Message Queue）
++ JMS
+  + ActiveMQ  消息中间件
+  + spring-boot-starter-activemq
+  + application.yml
+    + spring.activemq.broker-url
+    + spring.activemq.packages.trust-all
+    + spring.activemq.user
+    + spring.activemq.password
+
+
+### 邮件发送
+
+
+
+
 ### springboot 打包
 
 SpringBoot 可以打包成jar 和 war

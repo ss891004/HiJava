@@ -15,7 +15,7 @@ import java.util.List;
 
 //Mybatis使用详解
 @Slf4j
-public class Test3 {
+public class Test01 {
 
     /*
     * SqlSession相当于一个连接，可以使用这个对象对db执行增删改查操作，操作完毕之后需要关闭，使用步骤：
@@ -24,18 +24,19 @@ public class Test3 {
     *   3.关闭SqlSession对象：sqlSession.close();
     * */
 
-    //Mapper接口使用时注意的几点
-    //
-    //    Mapper接口的完整类名必须和对应的Mapper xml中的namespace的值一致
-    //    Mapper接口中方法的名称需要和Mapper xml中具体操作的id值一致
-    //    Mapper接口中方法的参数、返回值可以不和Mapper xml中的一致
+    /*
+    * Mapper接口使用时注意的几点
+        Mapper接口的完整类名必须和对应的Mapper xml中的namespace的值一致
+        Mapper接口中方法的名称需要和Mapper xml中具体操作的id值一致
+        Mapper接口中方法的参数、返回值可以不和Mapper xml中的一致
+    */
 
     private SqlSessionFactory sqlSessionFactory;
 
     @Before
     public void before() throws IOException {
         //指定mybatis全局配置文件
-        String resource = "src/main/resources/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         //读取全局配置文件
         InputStream inputStream = Resources.getResourceAsStream(resource);
         //构建SqlSessionFactory对象
@@ -58,7 +59,8 @@ public class Test3 {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(false)) {
             //创建UserModel对象
             UserModel2 userModel = UserModel2.builder().name("inset-a").age(30).salary(50000D).sex(1).build();
-            //执行插入操作
+
+            //执行插入操作 找到某个xml中的某个insert 段
             int result = sqlSession.insert("com.mybatis.mapper.UserMapper3.insertUser", userModel);
             log.info("插入影响行数：{}", result);
             //提交事务

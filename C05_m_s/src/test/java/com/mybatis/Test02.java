@@ -16,13 +16,13 @@ import java.util.List;
 
 //Mybatis使用详解
 @Slf4j
-public class Test4 {
+public class Test02 {
     private SqlSessionFactory sqlSessionFactory;
 
     @Before
     public void before() throws IOException {
         //指定mybatis全局配置文件
-        String resource = "src/main/resources/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         //读取全局配置文件
         InputStream inputStream = Resources.getResourceAsStream(resource);
         //构建SqlSessionFactory对象
@@ -33,6 +33,7 @@ public class Test4 {
     @Test
     public void insertUser() {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession(true)) {
+            //动态代理实现的
             UserMapper3 mapper = sqlSession.getMapper(UserMapper3.class);
             //创建UserModel对象
             UserModel2 userModel2 = UserModel2.builder().id(System.currentTimeMillis()).name("路人甲Java").age(30).salary(50000D).sex(1).build();

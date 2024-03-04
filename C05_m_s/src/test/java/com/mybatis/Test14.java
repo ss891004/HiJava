@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 // mybatis 常用CRUD
 @Slf4j
-public class Test2 {
+public class Test14 {
 
     //动态插入 - 根据对象中的字段是否有值，来拼接sql
     @Test

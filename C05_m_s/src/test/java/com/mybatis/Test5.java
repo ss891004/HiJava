@@ -30,7 +30,7 @@ public class Test5 {
     @Before
     public void before() throws IOException {
         //指定mybatis全局配置文件
-        String resource = "src/main/resources/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         //读取全局配置文件
         InputStream inputStream = Resources.getResourceAsStream(resource);
         //构建SqlSessionFactory对象
